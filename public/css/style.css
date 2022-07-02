@@ -1,0 +1,22 @@
+.detail-column{
+    width: 350px;
+}
+
+.detail-column p{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    -webkit-line-clamp: 1;
+}
+
+.address p{
+   display: -webkit-box;
+   -webkit-box-orient: vertical;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   white-space: normal;
+   -webkit-line-clamp: 2;
+}
+
