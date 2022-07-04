@@ -20,10 +20,19 @@
                 <td>{{$data->title}}</td>
             </tr>
             <tr>
-                <th>Photo</th>
-                <td><img width="100" src=" {{ asset('storage/imgges/'.$data->roomimgs) }}" /></td>
-             </tr>
-            <tr>
+                <th>Gallery Images</th>
+                <td>
+                    <table class="table table-bordered mt-3">
+                        <tr>
+                            @foreach($data->roomimgs as $img)
+                            <td class="imgcol{{$img->id}}">
+                                <img width="150" height="150" src="{{asset('storage/imgs/'.$img->img_src)}}" />
+                            </td>
+                            @endforeach
+                        </tr>
+                    </table>
+                </td>
+            </tr>
             </table>  
         </div>
     </div>

@@ -40,26 +40,32 @@ class RoomController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'title'=>'required',
-        ]);
 
         $data=new Room;
         $data->room_type_id=$request->rt_id;  //select the room_type_id from database and request rt_id, match with the create.blade.php (select and option part)
         $data->title=$request->title; //this "title" must match with the create.blade.php title name
         $data->save();
 
+        $input = $request->all();
+        if($request->hasFile('roomimgs')){
         foreach($request->file('roomimgs') as $img){ //the "imgs" is the input file name from the create.blade.php (roomtypes)
-            $imgPath=$img->store('public/imgges');
+            $extension = $img->getClientOriginalExtension();
+            $reImage = $img->getClientOriginalName();
+            $dest=public_path('storage/imgs');
+            $img->move($dest,$reImage);
+
+            $input['photo'] = $reImage;
+
             $imgData=new RoomImage;
             $imgData->room_id=$data->id; 
-            //room_type_id is the column from the roomtypeimage's table, and $data is the
-            //the new RoomTypes, id is the RoomType's id.
-            $imgData->img_src=$imgPath;
+            //room_id is the column from the roomimage's table, and $data is the
+            //new Room which shows  $data=new Room;, id is the Room's id.
+            $imgData->img_src=$reImage;
             $imgData->img_alt=$request->title;
             $imgData->save();
         }
-
+    }
+    
         return redirect('admin/rooms/create')->with('success','Data has been added.');
     }
 
@@ -101,6 +107,26 @@ class RoomController extends Controller
         $data->room_type_id=$request->rt_id;
         $data->title=$request->title; 
         $data->save();
+
+        $input = $request->all();
+        if($request->hasFile('roomimgs')){
+        foreach($request->file('roomimgs') as $img){ //the "imgs" is the input file name from the create.blade.php (roomtypes)
+            $extension = $img->getClientOriginalExtension();
+            $reImage = $img->getClientOriginalName();
+            $dest=public_path('storage/imgs');
+            $img->move($dest,$reImage);
+
+            $input['photo'] = $reImage;
+
+            $imgData=new RoomImage;
+            $imgData->room_id=$data->id; 
+            //room_id is the column from the roomimage's table, and $data is the
+            //new Room which shows  $data=new Room;, id is the Room's id.
+            $imgData->img_src=$reImage;
+            $imgData->img_alt=$request->title;
+            $imgData->save();
+        }
+    }
       
         return redirect('admin/rooms/'.$id.'/edit')->with('success','Data has been updated.');
     }
@@ -115,5 +141,14 @@ class RoomController extends Controller
     {
         Room::where('id',$id)->delete();
         return redirect('admin/rooms')->with('success','Data has been deleted.');
+    }
+
+    public function destroy_image($img_id)
+    {
+        $data=RoomImage::where('id',$img_id)->first();
+        Storage::delete($data->img_src);
+
+        RoomImage::where('id',$img_id)->delete();
+        return response()->json(['bool'=>true]);
     }
 }

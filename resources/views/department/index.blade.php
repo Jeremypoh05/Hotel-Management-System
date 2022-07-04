@@ -8,8 +8,8 @@
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Rooms
-        <a href="{{url('admin/rooms/create')}}" class="float-right btn btn-success btn-sm">Add New</a>
+        <h6 class="m-0 font-weight-bold text-primary">Department
+        <a href="{{url('admin/department/create')}}" class="float-right btn btn-success btn-sm">Add New</a>
         </h6>
     </div>
     <div class="card-body">
@@ -21,8 +21,8 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Room Type</th>
                         <th>Title</th>
+                        <th>Detail</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -32,12 +32,12 @@
                     @foreach($data as $d)
                     <tr>
                         <td>{{$d->id}}</td> <!--The id match from the database column-->
-                        <td>{{$d->roomtype->title}} <!--the "roomtype" is the function from the model -room which shows the relationship between room and roomtype(Room belongs to RoomType)-->
                         <td>{{$d->title}}</td> <!--The title match from the database column-->
+                        <td style="width:450px">{{$d->detail}}</td>
                         <td>
-                            <a href="{{url('admin/rooms/'.$d->id)}}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>
-                            <a href="{{url('admin/rooms/'.$d->id).'/edit'}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
-                            <a onclick="return confirm('Do you sure want to delete this data?')" href="{{url('admin/rooms/'.$d->id).'/delete'}}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                            <a href="{{url('admin/department/'.$d->id)}}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>
+                            <a href="{{url('admin/department/'.$d->id).'/edit'}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
+                            <a onclick="return confirm('Do you sure want to delete this data?')" href="{{url('admin/department/'.$d->id).'/delete'}}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
                         </td>
                     </tr>
                     @endforeach

@@ -55,12 +55,12 @@ class RoomTypeController extends Controller
             foreach($request->file('imgs') as $img){
                 $extension = $img->getClientOriginalExtension();
                 $reImage = $img->getClientOriginalName();
-                $dest=public_path('storage/imgs');
+                $dest=public_path('storage/roomtype');
                 $img->move($dest,$reImage);
 
                 $input['photo'] = $reImage;
 
-                $imgData=new Roomtypeimage;
+                $imgData=new RoomTypeImage;
                 $imgData->room_type_id=$data->id;
                 $imgData->img_src=$reImage;
                 $imgData->img_alt=$request->title;
@@ -114,12 +114,12 @@ class RoomTypeController extends Controller
             foreach($request->file('imgs') as $img){
                 $extension = $img->getClientOriginalExtension();
                 $reImage = $img->getClientOriginalName();
-                $dest=public_path('storage/imgs');
+                $dest=public_path('storage/roomtype');
                 $img->move($dest,$reImage);
 
                 $input['photo'] = $reImage;
 
-                $imgData=new Roomtypeimage;
+                $imgData=new RoomTypeImage;
                 $imgData->room_type_id=$data->id;
                 $imgData->img_src=$reImage;
                 $imgData->img_alt=$request->title;

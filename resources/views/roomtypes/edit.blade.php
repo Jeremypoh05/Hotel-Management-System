@@ -39,9 +39,9 @@
                     <table class="table table-bordered mt-3">
                         <tr>
                             <input type="file" multiple name="imgs[]" /> 
-                            @foreach($data->roomtypeimgs as $img)
+                            @foreach($data->roomtypeimgs as $img)<!--The roomimgs is the function from the model(room) which shows their relationship-->
                             <td class="imgcol{{$img->id}}">
-                                <img width="150" height="150" src="{{asset('storage/imgs/'.$img->img_src)}}" />
+                                <img width="150" height="150" src="{{asset('storage/roomtype/'.$img->img_src)}}" />
                                 <p class="mt-2">
                                     <button type="button" onclick="return confirm('Are you sure you want to delete this image??')" class="btn btn-danger btn-sm delete-image" data-image-id="{{$img->id}}"><i class="fa fa-trash"></i></button>
                                 </p>
