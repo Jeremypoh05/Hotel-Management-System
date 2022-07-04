@@ -39,7 +39,7 @@
         <ul class="navbar-nav bg-gradient-info sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{url('admin')}}">
                 <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-hotel"></i>                
                 </div>
@@ -51,7 +51,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="{{url('admin')}}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -138,6 +138,13 @@
                         <a class="collapse-item" href="{{url('admin/staff')}}">View All</a>
                     </div>
                 </div>
+            </li>
+
+            <!-- Booking -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{url('admin/booking')}}">
+                    <i class="fas fa-hotel"></i>
+                    <span>Bookings</span></a>
             </li>
 
               <!--Logout -->
@@ -335,7 +342,7 @@
                                     Activity Log
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" href="{{url('admin/logout')}}" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>

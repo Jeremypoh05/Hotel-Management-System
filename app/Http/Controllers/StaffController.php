@@ -136,9 +136,9 @@ class StaffController extends Controller
        return redirect('admin/staff')->with('success','Data has been deleted.');
     }
 
-    // All Payments
+    // Show Payments of a specific staff
     function all_payments(Request $request,$staff_id){
-        $data=StaffPayment::where('staff_id',$staff_id)->get();
+        $data=StaffPayment::where('staff_id',$staff_id)->get(); //parse the database table column staff_id to the $staff_id
         $staff=Staff::find($staff_id);
         return view('staffpayment.index',['staff_id'=>$staff_id,'data'=>$data,'staff'=>$staff]);
     }
