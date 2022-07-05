@@ -109,21 +109,7 @@ dashboard page, and also all the script and plugin css js resources -->
             <!-- Card Header - Dropdown -->
             <div
                 class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
-                <div class="dropdown no-arrow">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                        aria-labelledby="dropdownMenuLink">
-                        <div class="dropdown-header">Dropdown Header:</div>
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </div>
+                <h6 class="m-0 font-weight-bold text-primary">Bookings Overview</h6>
             </div>
             <!-- Card Body -->
             <div class="card-body">
@@ -140,21 +126,7 @@ dashboard page, and also all the script and plugin css js resources -->
             <!-- Card Header - Dropdown -->
             <div
                 class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
-                <div class="dropdown no-arrow">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                        aria-labelledby="dropdownMenuLink">
-                        <div class="dropdown-header">Dropdown Header:</div>
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </div>
+                <h6 class="m-0 font-weight-bold text-primary">RoomType Bookings</h6>
             </div>
             <!-- Card Body -->
             <div class="card-body">
@@ -162,15 +134,11 @@ dashboard page, and also all the script and plugin css js resources -->
                     <canvas id="myPieChart"></canvas>
                 </div>
                 <div class="mt-4 text-center small">
+                    @foreach($plabels as $label)
                     <span class="mr-2">
-                        <i class="fas fa-circle text-primary"></i> Direct
+                        <i class="fas fa-circle text-primary"></i> {{$label}}
                     </span>
-                    <span class="mr-2">
-                        <i class="fas fa-circle text-success"></i> Social
-                    </span>
-                    <span class="mr-2">
-                        <i class="fas fa-circle text-info"></i> Referral
-                    </span>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -332,5 +300,23 @@ dashboard page, and also all the script and plugin css js resources -->
 
 </div>
 <!-- /.container-fluid -->
+
+<!-- Page level plugins -->
+<script src="/vendor/chart.js/Chart.min.js"></script>
+
+<script type="text/javascript">
+     //------------ Area Chart -------------
+    var _labels={!! json_encode($labels) !!};
+    var _data={!! json_encode($data) !!};
+
+    //------------ Pie Chart -------------
+    var _plabels={!! json_encode($plabels) !!};
+    var _pdata={!! json_encode($pdata) !!};
+   
+</script>
+<!-- Page level custom scripts -->
+<script src="/js/demo/chart-area-demo.js"></script>
+<script src="/js/demo/chart-pie-demo.js"></script>
+
 
 @endsection

@@ -17,6 +17,7 @@ class CreateRoomsTable extends Migration
             $table->id();
             $table->string('title');
             $table->integer('room_type_id');
+            $table->string('price')->nullable();
             $table->timestamps();
         });
     }
@@ -31,5 +32,3 @@ class CreateRoomsTable extends Migration
         Schema::dropIfExists('rooms');
     }
 }
-
-

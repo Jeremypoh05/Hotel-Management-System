@@ -27,8 +27,8 @@
             @csrf
             <table class="table table-bordered">
             <tr>
-                <th>Title</th>
-                <td><input name="title" type="text" class="form-control" /></td>
+                <th>Type</th>
+                <td><input name="type" type="text" class="form-control" /></td>
             </tr>
             <tr>
                 <th>Price</th>

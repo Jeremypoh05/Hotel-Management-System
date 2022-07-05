@@ -21,7 +21,7 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Title</th>
+                        <th>Type</th>
                         <th>Price</th>
                         <th>Detail</th>
                         <th>Gallery Image</th>
@@ -34,7 +34,7 @@
                     @foreach($data as $d)
                     <tr>
                         <td>{{$d->id}}</td> <!--The id match from the database column-->
-                        <td>{{$d->title}}</td> <!--The title match from the database column-->
+                        <td>{{$d->type}}</td> <!--The "type" match from the database column-->
                         <td>{{$d->price}}</td>
                         <td class="detail-column"> <p>{{$d->detail}}</p></td>
                         <td>{{count($d->roomtypeimgs)}}</td> <!--The "roomtypeimgs is the function from model(roomtype)"-->

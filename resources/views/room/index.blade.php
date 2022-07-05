@@ -32,7 +32,7 @@
                     @foreach($data as $d)
                     <tr>
                         <td>{{$d->id}}</td> <!--The id match from the database column-->
-                        <td>{{$d->roomtype->title}} <!--the "roomtype" is the function from the model -room which shows the relationship between room and roomtype(Room belongs to RoomType)-->
+                        <td>{{$d->roomtype->type}} <!--the "roomtype" is the function from the model -room which shows the relationship between room and roomtype(Room belongs to RoomType)-->
                         <td>{{$d->title}}</td> <!--The title match from the database column-->
                         <td>
                             <a href="{{url('admin/rooms/'.$d->id)}}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>

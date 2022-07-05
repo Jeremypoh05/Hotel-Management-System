@@ -39,13 +39,13 @@ class RoomTypeController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title'=>'required',
+            'type'=>'required',
             'price'=>'required',
             'detail'=>'required',
         ]);
 
         $data=new RoomTypes;
-        $data->title=$request->title; //this "title" must match with the create.blade.php title name
+        $data->type=$request->type; //this "type" must match with the create.blade.php type name
         $data->price=$request->price;
         $data->detail=$request->detail;
         $data->save();
@@ -63,7 +63,7 @@ class RoomTypeController extends Controller
                 $imgData=new RoomTypeImage;
                 $imgData->room_type_id=$data->id;
                 $imgData->img_src=$reImage;
-                $imgData->img_alt=$request->title;
+                $imgData->img_alt=$request->type;
                 $imgData->save();
             }
         }
@@ -105,7 +105,7 @@ class RoomTypeController extends Controller
     public function update(Request $request, $id)
     {
         $data= RoomTypes::find($id);
-        $data->title=$request->title; 
+        $data->type=$request->type; 
         $data->price=$request->price;
         $data->detail=$request->detail;
         $data->save();

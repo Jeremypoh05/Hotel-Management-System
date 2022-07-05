@@ -31,9 +31,8 @@ Route::get('admin/logout',[AdminController::class,'logout']);
 
 
 //Admin Dashboard
-Route::get('admin', function () {
-    return view('dashboard');
-});
+Route::get('admin',[AdminController::class,'dashboard']);
+
 
 //RoomType 
 Route::get('admin/roomtype/{id}/delete',[RoomTypeController::class,'destroy']);

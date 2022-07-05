@@ -32,7 +32,7 @@
                     <select name="rt_id" class="form-control">
                         <option value="0">---- Select ----</option>
                         @foreach($roomtypes as $rt)
-                        <option value="{{$rt->id}}">{{$rt->title}}</option> 
+                        <option value="{{$rt->id}}">{{$rt->type}}</option> 
                         <!--Make sure the rt_id match with 
                         the request of function "store" in roomController-->
                         @endforeach
@@ -43,6 +43,10 @@
             <tr>
                 <th>Title</th>
                 <td><input name="title" type="text" class="form-control" /></td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td><input name="room_price"class="form-control" /></td>
             </tr>
             <tr>
                 <th>Gallery</th>
