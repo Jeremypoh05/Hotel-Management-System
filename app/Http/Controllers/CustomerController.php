@@ -15,7 +15,7 @@ class CustomerController extends Controller
     public function index()
     {
         $data=Customer::all();
-        return view('customer.index',['data'=>$data]); //return the index file from roomtypes folder in public, 
+        return view('customer.index',['data'=>$data]); //return the index file from customer folder in public, 
     }
 
     /**
@@ -42,6 +42,7 @@ class CustomerController extends Controller
             'email'=>'required|email',
             'password'=>'required',
             'mobile'=>'required',
+            'address'=>'required',
         ]);
 
         $input = $request->all();
@@ -68,6 +69,11 @@ class CustomerController extends Controller
         $data->photo=$reImage;
         $data->save();
 
+        $ref=$request->ref; //ref is the input type hidden name from the register.blade.php
+        if($ref=='front'){
+            return redirect('customer/register')->with('success','Congratulations! Account register sucessfully, please log in now');;
+        }
+        
         return redirect('admin/customer/create')->with('success','Data has been added.');
     }
 
@@ -146,4 +152,35 @@ class CustomerController extends Controller
         Customer::where('id',$id)->delete();
         return redirect('admin/customer')->with('success','Data has been deleted.');
     }
+
+    //Customer Login
+    public function login(){
+        return view('frontendLogin');
+    }
+
+     //Check Login
+     public function customer_login(Request $request){
+        $email=$request->LogInEmail;
+        $pwd=sha1($request->LogInPassword);
+        $detail=Customer::where(['email'=>$email,'password'=>$pwd])->count();
+        if($detail>0){
+            $detail=Customer::where(['email'=>$email,'password'=>$pwd])->get();
+            session(['customerlogin'=>true,'data'=>$detail]);
+            return redirect('home');
+        }else{
+            return redirect('customer/login')->with('error','Invalid email/password!');
+        }
+    }
+
+      //Customer Register
+      public function register(){
+        return view('frontendRegister');
+    }
+
+    //Customer Register
+    public function logout(){
+        session()->forget(['customerlogin','data']);
+        return redirect('customer/login');
+}
+    
 }

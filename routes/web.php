@@ -5,9 +5,12 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\RoomTypeController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\StaffDepartmentController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\BookingController;
+
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,10 +22,7 @@ use App\Http\Controllers\BookingController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/home', [HomeController::class,'homepage']);
 
 //Admin Login
 Route::get('admin/login',[AdminController::class,'login']);
@@ -32,7 +32,6 @@ Route::get('admin/logout',[AdminController::class,'logout']);
 
 //Admin Dashboard
 Route::get('admin',[AdminController::class,'dashboard']);
-
 
 //RoomType 
 Route::get('admin/roomtype/{id}/delete',[RoomTypeController::class,'destroy']);
@@ -45,6 +44,10 @@ Route::resource('admin/rooms',RoomController::class);
 //Customer
 Route::get('admin/customer/{id}/delete',[CustomerController::class,'destroy']);
 Route::resource('admin/customer',CustomerController::class);
+
+//Gallery
+Route::get('admin/gallery/{id}/delete',[GalleryController::class,'destroy']);
+Route::resource('admin/gallery',GalleryController::class);
 
 //Delete Image Room Type
 Route::get('admin/roomtypeimage/delete/{id}',[RoomTypeController::class,'destroy_image']);
@@ -77,6 +80,17 @@ Route::get('admin/booking/{id}/delete',[BookingController::class,'destroy']);
 Route::get('admin/booking/available-rooms/{checkin_date}',[BookingController::class,'available_rooms']);
 Route::resource('admin/booking',BookingController::class);
 
+
+//Frontend Login
+Route::get('customer/login',[CustomerController::class,'login']);
+Route::post('customer/login',[CustomerController::class,'customer_login']);
+//Frontend Register
+Route::get('customer/register',[CustomerController::class,'register']);
+//Frontend Logout
+Route::get('customer/logout',[CustomerController::class,'logout']);
+//Frontend Booking 
+Route::get('booking',[BookingController::class,'frontend_booking']);
+
+
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

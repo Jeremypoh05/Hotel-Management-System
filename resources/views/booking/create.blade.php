@@ -49,7 +49,7 @@
                 <th>Avaiable Rooms <span class="text-danger">*</span></th>
                 <td>
                     <select class="form-control room-list" name="room_id"></select>
-                    <p>Price: <span class="show-room-price"></span></p>
+                   
                   </td>
             </tr>
             <tr>
@@ -61,6 +61,10 @@
                 <td><input name="total_children" type="text" class="form-control" /></td>
              </tr>                         
             <tr>
+                <tr>
+                <th> Price:</th>
+                <td><p> <span class="show-room-price"></span></p></td>
+                </tr>
                 <td colspan="2">
                 <input type="submit" class="btn btn-primary" />
                 </td> 

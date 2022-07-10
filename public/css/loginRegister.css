@@ -1,0 +1,332 @@
+/* ------------------- Login Register Page -----------------------*/
+/* Reuseable Class For Login-Register Page */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.particles-body{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  #particles-js {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: linear-gradient(rgba(1, 1, 8, 0), #1c1e21), url("/images/registerbg.jpg") ;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+  }
+  
+  .login-regis-title{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 5px;
+    font-size: 30px;
+    font-weight: 700;
+     /* Create the gradient. */
+   background-image: linear-gradient(
+    45deg,
+    #4288ca 16.666%, 
+    #415ce1 16.666%, 
+    #4d38c6 33.333%, 
+    #45b0e9 33.333%, 
+    #084c90 50%, 
+    #37abcf 50%, 
+    #0622f1 66.666%, 
+    #476098 66.666%, 
+    #476098 83.333%, 
+    #075196 83.333%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    animation: rainbow-text-simple-animation-rev 0.35s ease forwards;
+  }
+  
+  .login-regis-title:hover{
+    animation: rainbow-text-simple-animation 0.7s ease-in forwards;
+  }
+  
+  /* Move the background and make it smaller. */
+  /* Animation shown when entering the page and after the hover animation. */
+  @keyframes rainbow-text-simple-animation-rev {
+    0% {
+        background-size: 650%;
+    }
+    40% {
+        background-size: 650%;
+    }
+    100% {
+        background-size: 100%;
+    }
+  }
+  
+  /* Move the background and make it larger. */
+  /* Animation shown when hovering over the text. */
+  @keyframes rainbow-text-simple-animation {
+    0% {
+        background-size: 100%;
+    }
+    80% {
+        background-size: 650%;
+    }
+    100% {
+        background-size: 650%;
+    }
+  }
+  
+  .input-field{
+    position: relative;
+    height: 50px;
+    width: 100%;
+    margin-top: 30px;
+  }
+  
+  .input-field input{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    padding: 0 35px;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    border-bottom: 2px solid rgb(56, 75, 215);
+    border-top: 2px solid transparent;
+    transition: all 0.2s ease;
+    color: rgb(31, 23, 23);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+  
+  .input-field input:is(:focus, :valid){
+    border-bottom-color: #2558e6;
+  }
+  
+  .input-field i{
+    opacity: 0.8;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 23px;
+    transition: all 0.2s ease;
+  }
+  
+  .input-field input:is(:focus, :valid) ~ i{
+    color: #1344cb;
+  }
+  
+  .input-field i.icon{
+    left: 0;
+  }
+  .input-field i.showHidePw{
+    right: 0;
+    cursor: pointer;
+    padding: 10px;
+  }
+  
+  .text{
+    color: #333;
+    font-size: 14px;
+    font-family:sans-serif;
+  }
+  
+  a.text{
+    color: #4070f4;
+    text-decoration: none;
+  }
+  
+  .login-regis-button{
+    margin-top: 35px;
+  }
+  
+  .login-regis-button input{
+    background-size: 300% 100%; /* 300% of width and 100% of height */
+    border: none;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    border-radius: 6px;
+    background-image: linear-gradient(to right, #25aae1, #4481eb, #04befe, #3f86ed);
+    box-shadow: 0 4px 15px 0 rgba(65, 132, 234, 0.75);    cursor: pointer;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+  }
+  
+  .login-regis-button input:hover{
+    background-position: 100% 0;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+    background-image: linear-gradient(to right, #0976a5, #3e609b, #06536c, #0976a5);
+    box-shadow: 0 4px 15px 0 rgba(65, 132, 234, 0.75);
+  }
+  
+  .login-register{
+    margin-top: 30px;
+    text-align: center;
+  }
+  
+  .error-success-data{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items:baseline;
+    height: 28px;
+  }
+  
+  .error-success{
+    margin-top: 15px;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .error{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    color: red;
+    font-size: 13px;
+  }
+
+  .success{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #226dbd;
+    font-size: 14px;
+  }
+  
+  /* Login Page */
+  .login-container{
+    position: relative;
+    max-width: 700px;
+    width: 450px;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin: 0 20px;
+  }
+  
+  .login-container .Form{
+    display: flex;
+    align-items: center;
+    height: 440px;
+    width: 200%;
+    transition: height 0.2s ease;
+  }
+  
+  .login-container .loginForm{
+    background-color: #fff;
+    width: 50%;
+    padding: 30px;
+    opacity: 0.8;
+    transition: margin-left 0.18s ease;
+  }
+  
+  .signin-title::before{
+    content: '';
+    width: 70px;
+    height: 3px;
+    background-color: rgb(53, 94, 216);
+    position: absolute;
+    left: 42%;
+    bottom: -10%;
+    border-radius: 5px;
+  }
+  
+  .loginForm .checkbox-text{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 40px;
+  }
+  
+  .checkbox-text .checkbox-content{
+    display: flex;
+    align-items: center;
+  }
+  
+  .checkbox-content input{
+    margin: 0 8px -2px 4px;
+    accent-color: #4070f4;
+  }
+  
+  .login-link:hover{
+    text-decoration: underline;
+  }
+  
+  /* Register Page */
+  .register-container{
+    position: relative;
+    max-width: 700px;
+    width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin: 60px 20px 0;
+  
+  }
+  
+  .register-container .Form{
+    display: flex;
+    align-items: center;
+    height: 620px;
+    width: 200%;
+    transition: height 0.2s ease;
+    zoom: 0.85;
+  }
+  
+  .register-container .registerForm{
+    width: 50%;
+    padding: 30px;
+    background-color: #fff;
+    opacity: 0.8;
+    transition: margin-left 0.18s ease;
+  }
+  
+  .signup-title::before{
+    content: '';
+    width: 120px;
+    height: 3px;
+    background-color: rgb(53, 94, 216);
+    position: absolute;
+    left: 35%;
+    bottom: -10%;
+    border-radius: 5px;
+  }
+  
+  .indicator{
+    display: none;
+  }
+  
+  .indicator.active{
+    display: block;
+    margin-top: 14px;
+  }
+  
+  .indicator .icon-text{
+    display: flex;
+    align-items: center;
+  }
+  
+  .icon-text .error_icon{
+    margin-right: 8px;
+  }
+  
+  .icon-text .text{
+    font-size: 14px;
+    font-weight: 500;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .register-link:hover{
+    text-decoration: underline;
+  }
+  

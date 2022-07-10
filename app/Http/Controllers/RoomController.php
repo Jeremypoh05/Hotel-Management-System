@@ -52,10 +52,10 @@ class RoomController extends Controller
         foreach($request->file('roomimgs') as $img){ //the "imgs" is the input file name from the create.blade.php (roomtypes)
             $extension = $img->getClientOriginalExtension();
             $reImage = $img->getClientOriginalName();
-            $dest=public_path('storage/imgs');
+            $dest=public_path('storage/room');
             $img->move($dest,$reImage);
 
-            $input['photo'] = $reImage;
+            $input['roomimgs'] = $reImage;
 
             $imgData=new RoomImage;
             $imgData->room_id=$data->id; 
@@ -115,10 +115,10 @@ class RoomController extends Controller
         foreach($request->file('roomimgs') as $img){ //the "imgs" is the input file name from the create.blade.php (roomtypes)
             $extension = $img->getClientOriginalExtension();
             $reImage = $img->getClientOriginalName();
-            $dest=public_path('storage/imgs');
+            $dest=public_path('storage/room');
             $img->move($dest,$reImage);
 
-            $input['photo'] = $reImage;
+            $input['roomimgs'] = $reImage;
 
             $imgData=new RoomImage;
             $imgData->room_id=$data->id; 

@@ -15,7 +15,6 @@ dashboard page, and also all the script and plugin css js resources -->
 <!-- Content Row -->
 <div class="row">
 
-    <!-- Earnings (Monthly) Card Example -->
     <div class="col-xl-3 col-md-6 mb-4">
         <div class="card border-left-primary shadow h-100 py-2">
             <div class="card-body">
@@ -26,7 +25,7 @@ dashboard page, and also all the script and plugin css js resources -->
                         <div class="h5 mb-0 font-weight-bold text-gray-800">{{App\Models\Booking::count()}}</div>
                     </div>
                     <div class="col-auto">
-                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                        <i class="fas fa-hotel fa-2x text-gray-300"></i>
                     </div>
                 </div>
             </div>
@@ -44,7 +43,7 @@ dashboard page, and also all the script and plugin css js resources -->
                         <div class="h5 mb-0 font-weight-bold text-gray-800">{{App\Models\Customer::count()}}</div>
                     </div>
                     <div class="col-auto">
-                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                        <i class="fas fa-fw fa-user fa-2x text-gray-300"></i>
                     </div>
                 </div>
             </div>
@@ -63,17 +62,10 @@ dashboard page, and also all the script and plugin css js resources -->
                             <div class="col-auto">
                                 <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{App\Models\RoomTypes::count()}}</div>
                             </div>
-                            <div class="col">
-                                <div class="progress progress-sm mr-2">
-                                    <div class="progress-bar bg-info" role="progressbar"
-                                        style="width: 50%" aria-valuenow="50" aria-valuemin="0"
-                                        aria-valuemax="100"></div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <div class="col-auto">
-                        <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                        <i class="fas fa-home fa-2x text-gray-300"></i>
                     </div>
                 </div>
             </div>
@@ -91,7 +83,7 @@ dashboard page, and also all the script and plugin css js resources -->
                         <div class="h5 mb-0 font-weight-bold text-gray-800">{{App\Models\Staff::count()}}</div>
                     </div>
                     <div class="col-auto">
-                        <i class="fas fa-comments fa-2x text-gray-300"></i>
+                        <i class="fas fa-fw fa-users fa-2x text-gray-300"></i>
                     </div>
                 </div>
             </div>
@@ -137,6 +129,7 @@ dashboard page, and also all the script and plugin css js resources -->
                     @foreach($plabels as $label)
                     <span class="mr-2">
                         <i class="fas fa-circle text-primary"></i> {{$label}}
+                        <i class="fas fa-circle text-success"></i> {{$label}}
                     </span>
                     @endforeach
                 </div>
@@ -315,8 +308,7 @@ dashboard page, and also all the script and plugin css js resources -->
    
 </script>
 <!-- Page level custom scripts -->
-<script src="/js/demo/chart-area-demo.js"></script>
-<script src="/js/demo/chart-pie-demo.js"></script>
-
+<script src="/js/chart/chart-area.js"></script>
+<script src="/js/chart/chart-pie.js"></script>
 
 @endsection

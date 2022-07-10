@@ -45,7 +45,6 @@ class BookingController extends Controller
             'room_id'=>'required',
             'checkin_date'=>'required',
             'checkout_date'=>'required',
-            'total_adults'=>'required',
         ]);
 
         $data=new Booking;
@@ -57,6 +56,21 @@ class BookingController extends Controller
         $data->total_children=$request->total_children;
         $data->save();
 
+
+        if($request->ref=='front'){
+            $sessionData=[
+                'customer_id'=>$request->customer_id,
+                'room_id'=>$request->room_id,
+                'checkin_date'=>$request->checkin_date,
+                'checkout_date'=>$request->checkout_date,
+                'total_adults'=>$request->total_adults,
+                'total_children'=>$request->total_children,
+                'roomprice'=>$request->roomprice,
+                'ref'=>$request->ref
+            ];
+            session($sessionData);
+            return redirect('booking')->with('success','Booking has been created.');
+        }
         return redirect('admin/booking/create')->with('success','Data has been added.');
     }
 
@@ -116,5 +130,11 @@ class BookingController extends Controller
         }
 
         return response()->json(['data'=>$data]);
+    }
+
+    public function frontend_booking()
+    {
+        $customers=Customer::all();
+        return view('frontendBooking');
     }
 }

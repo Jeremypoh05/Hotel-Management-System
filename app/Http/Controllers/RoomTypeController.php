@@ -58,7 +58,7 @@ class RoomTypeController extends Controller
                 $dest=public_path('storage/roomtype');
                 $img->move($dest,$reImage);
 
-                $input['photo'] = $reImage;
+                $input['imgs'] = $reImage;
 
                 $imgData=new RoomTypeImage;
                 $imgData->room_type_id=$data->id;
@@ -117,12 +117,12 @@ class RoomTypeController extends Controller
                 $dest=public_path('storage/roomtype');
                 $img->move($dest,$reImage);
 
-                $input['photo'] = $reImage;
+                $input['imgs'] = $reImage;
 
                 $imgData=new RoomTypeImage;
                 $imgData->room_type_id=$data->id;
                 $imgData->img_src=$reImage;
-                $imgData->img_alt=$request->title;
+                $imgData->img_alt=$request->type;
                 $imgData->save();
             }
         }

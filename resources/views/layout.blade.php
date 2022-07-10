@@ -26,8 +26,8 @@
     <!-- Custom styles for this template-->
     <link href="/css/sb-admin-2.min.css" rel="stylesheet">
 
-     <!-- Custom styles CSS-->
-    <link rel="stylesheet" href="/css/style.css">
+     <!-- Custom styles CSS (backend)-->
+    <link rel="stylesheet" href="/css/backend.css">
 </head>
 
 <body id="page-top">
@@ -106,6 +106,21 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="{{url('admin/customer/create')}}">Add New</a>
                         <a class="collapse-item" href="{{url('admin/customer')}}">View All</a>
+                    </div>
+                </div>
+            </li>
+
+             <!--Gallery -->
+             <li class="nav-item">
+                <a class="nav-link @if(!request()->is('admin/gallery*')) collapsed @endif" href="#" data-toggle="collapse" data-target="#gallery"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-images"></i>
+                    <span>Gallery</span>
+                </a>
+                <div id="gallery" class="collapse @if(request()->is('admin/gallery*')) show @endif" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{url('admin/gallery/create')}}">Add New</a>
+                        <a class="collapse-item" href="{{url('admin/gallery')}}">View All</a>
                     </div>
                 </div>
             </li>
