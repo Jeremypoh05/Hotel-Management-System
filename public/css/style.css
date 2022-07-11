@@ -459,7 +459,7 @@ button {
   }
   
   .homepage-bg-slider-thumbs.swiper-slide-thumb-active{
-    border: 1px solid var(---light-color);
+    border: 1px solid var(--light-color);
   }
 
 
@@ -1200,7 +1200,7 @@ padding: 50px 0;
 
 .booking-btn{
 	background-color: rgba(0, 0, 0, .95);
-	color: #fff;
+	color: var(--light-color);
 	padding: 10px 20px;
 	border: none;
 	font-size: 18px;
@@ -1249,4 +1249,89 @@ padding: 50px 0;
 	
 }
 /* -----------x---------- End of Booking Page ------------x------------*/
+
+/* ------------------------ Success Page / Failure Page------------------------*/
+.success-failure-contianer {
+  width: 100%;
+  height: 100vh;
+  background: #3c5077;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.success-fail-box{
+  width: 400px;
+  background: var(--light-color);
+  border-radius: 6px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  padding: 0 30px 30px;
+  color: #333;
+}
+
+.success-fail-box img{
+  width: 100px;
+  margin-top: -50px;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.success-fail-box h2{
+  font-family: "Times New Roman", Times, serif;
+  font-size: 38px;
+  font-weight: 500;
+  margin: 30px 0 10px;
+}
+
+.success-fail-box p{
+ letter-spacing: normal;
+ font-size: 14px;
+}
+
+.success-fail-box .btn-go-back{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 50px;
+  padding: 10px 0;
+  background: #160505;
+  color:var(--light-color);
+  font-weight: 500;
+  border: 1px solid var(--dark-color);
+  outline: none;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.3s ease-in;
+}
+
+.success-fail-box .booking-success:hover{
+  background: #6fd649;
+  color: rgb(30, 20, 20);
+}
+
+.success-fail-box .booking-error:hover{
+  background: #ec2727;
+  color: rgb(30, 20, 20);
+}
+
+.success-fail-box .btn-go-back a{
+font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+letter-spacing: normal;
+padding-right: 7px;
+}
+
+.success-fail-box span{
+  padding-left: 5px;
+}
+
+.success-fail-box #smile{
+  font-size: 18px;
+  color: #ffc34d;
+}
 

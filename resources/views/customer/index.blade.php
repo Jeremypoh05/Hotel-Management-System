@@ -35,10 +35,10 @@
                     <tr>
                         <td>{{$d->id}}</td> <!--The id match from the database column-->
                         <td>{{$d->full_name}}</td> <!--The full_name match from the database column-->
-                        <td style="width:100px;">{{$d->email}}</td>
-                        <td>{{$d->mobile}}</td>
+                        <td style="max-width:215px">{{$d->email}}</td>
+                        <td style="max-width:125px">{{$d->mobile}}</td>
                         <td class="address" style="width:170px"><p>{{$d->address}}</p></td>
-                        <td>
+                        <td style="width:170px">
                             <a href="{{url('admin/customer/'.$d->id)}}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>
                             <a href="{{url('admin/customer/'.$d->id).'/edit'}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
                             <a onclick="return confirm('Do you sure want to delete this data?')" href="{{url('admin/customer/'.$d->id).'/delete'}}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
@@ -64,7 +64,7 @@
 <script src="/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
 <!-- Page level custom scripts -->
-<script src="/js/demo/datatables-demo.js"></script>
+<script src="/js/chart/datatables.js"></script>
 
 @endsection
 

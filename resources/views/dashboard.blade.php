@@ -90,6 +90,73 @@ dashboard page, and also all the script and plugin css js resources -->
         </div>
     </div>
 </div>
+<!-- Content Row -->
+<div class="row">
+    <div class="container-fluid">                 
+                
+         <div class="card shadow mb-4">
+             <div class="card-header py-3">
+                 <h6 class="m-0 font-weight-bold text-primary">All Bookings
+                     <a href="{{url('admin/booking/create')}}" class="float-right btn btn-success btn-sm">Add New</a>
+                 </h6>
+             </div>
+             <div class="card-body">
+                 @if(Session::has('success'))
+                 <p class="text-success">{{session('success')}}</p>
+                 @endif
+                 <div class="table-responsive">
+                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                         <thead>
+                             <tr>
+                                 <th>#</th>
+                                 <th>Customer</th>
+                                 <th>Room No.</th>
+                                 <th style="max-width:50px">Room Type</th>
+                                 <th style="max-width:70px">CheckIn Date</th>
+                                 <th style="max-width:70px">CheckOut Date</th>
+                                 <th>Price</th>
+                                 <th>Ref</th>
+                                 <th>Action</th>
+                             </tr>
+                         </thead>
+                         <tfoot>
+                             <tr>
+                                 <th>#</th>
+                                 <th>Customer</th>
+                                 <th>Room No.</th>
+                                 <th>Room Type</th>
+                                 <th>CheckIn Date</th>
+                                 <th>CheckOut Date</th>
+                                 <th>Price</th>
+                                 <th>Ref</th>
+                                 <th>Action</th>
+                             </tr>
+                         </tfoot>
+                         <tbody>
+                             @foreach($bookingdata as $booking)
+                             <tr>
+                                 <td>{{$booking->id}}</td>
+                                 <td>{{$booking->customer->full_name}}</td><!--customer is the function of reletionship that created from booking model-->
+                                 <td>{{$booking->room->title}}</td> <!--room is the function of reletionship that created from booking model-->
+                                 <td>{{$booking->room->roomtype->type}}</td><!--roomtype is the function of reletionship that created from room model-->
+                                 <td>{{$booking->checkin_date}}</td>
+                                 <td>{{$booking->checkout_date}}</td>
+                                 <td>{{$booking->room->price}}</td>
+                                 <td>{{$booking->ref}}</td>
+                                 <td><a href="{{url('admin/booking/'.$booking->id)}}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>
+                                     <a href="{{url('admin/booking/'.$booking->id.'/delete')}}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this data?')"><i class="fa fa-trash"></i></a>
+                                 </td>
+                                 <!--parse the .$booking according to the database booking id -->
+                                </tr>
+                             @endforeach
+                         </tbody>
+                     </table>
+                 </div>
+             </div>
+         </div>
+
+     </div>
+</div>
 
 <!-- Content Row -->
 
@@ -138,161 +205,18 @@ dashboard page, and also all the script and plugin css js resources -->
     </div>
 </div>
 
-<!-- Content Row -->
-<div class="row">
-
-    <!-- Content Column -->
-    <div class="col-lg-6 mb-4">
-
-        <!-- Project Card Example -->
-        <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Projects</h6>
-            </div>
-            <div class="card-body">
-                <h4 class="small font-weight-bold">Server Migration <span
-                        class="float-right">20%</span></h4>
-                <div class="progress mb-4">
-                    <div class="progress-bar bg-danger" role="progressbar" style="width: 20%"
-                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <h4 class="small font-weight-bold">Sales Tracking <span
-                        class="float-right">40%</span></h4>
-                <div class="progress mb-4">
-                    <div class="progress-bar bg-warning" role="progressbar" style="width: 40%"
-                        aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <h4 class="small font-weight-bold">Customer Database <span
-                        class="float-right">60%</span></h4>
-                <div class="progress mb-4">
-                    <div class="progress-bar" role="progressbar" style="width: 60%"
-                        aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <h4 class="small font-weight-bold">Payout Details <span
-                        class="float-right">80%</span></h4>
-                <div class="progress mb-4">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 80%"
-                        aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <h4 class="small font-weight-bold">Account Setup <span
-                        class="float-right">Complete!</span></h4>
-                <div class="progress">
-                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%"
-                        aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Color System -->
-        <div class="row">
-            <div class="col-lg-6 mb-4">
-                <div class="card bg-primary text-white shadow">
-                    <div class="card-body">
-                        Primary
-                        <div class="text-white-50 small">#4e73df</div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 mb-4">
-                <div class="card bg-success text-white shadow">
-                    <div class="card-body">
-                        Success
-                        <div class="text-white-50 small">#1cc88a</div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 mb-4">
-                <div class="card bg-info text-white shadow">
-                    <div class="card-body">
-                        Info
-                        <div class="text-white-50 small">#36b9cc</div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 mb-4">
-                <div class="card bg-warning text-white shadow">
-                    <div class="card-body">
-                        Warning
-                        <div class="text-white-50 small">#f6c23e</div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 mb-4">
-                <div class="card bg-danger text-white shadow">
-                    <div class="card-body">
-                        Danger
-                        <div class="text-white-50 small">#e74a3b</div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 mb-4">
-                <div class="card bg-secondary text-white shadow">
-                    <div class="card-body">
-                        Secondary
-                        <div class="text-white-50 small">#858796</div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 mb-4">
-                <div class="card bg-light text-black shadow">
-                    <div class="card-body">
-                        Light
-                        <div class="text-black-50 small">#f8f9fc</div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 mb-4">
-                <div class="card bg-dark text-white shadow">
-                    <div class="card-body">
-                        Dark
-                        <div class="text-white-50 small">#5a5c69</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="col-lg-6 mb-4">
-
-        <!-- Illustrations -->
-        <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
-            </div>
-            <div class="card-body">
-                <div class="text-center">
-                    <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
-                        src="img/undraw_posting_photo.svg" alt="...">
-                </div>
-                <p>Add some quality, svg illustrations to your project courtesy of <a
-                        target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a
-                    constantly updated collection of beautiful svg images that you can use
-                    completely free and without attribution!</p>
-                <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on
-                    unDraw &rarr;</a>
-            </div>
-        </div>
-
-        <!-- Approach -->
-        <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
-            </div>
-            <div class="card-body">
-                <p>SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce
-                    CSS bloat and poor page performance. Custom CSS classes are used to create
-                    custom components and custom utility classes.</p>
-                <p class="mb-0">Before working with this theme, you should become familiar with the
-                    Bootstrap framework, especially the utility classes.</p>
-            </div>
-        </div>
-
-    </div>
-</div>
-
-</div>
 <!-- /.container-fluid -->
+
+
+@section('scripts') <!--Call the jqeury plugin first from layout.blade.php-->
+<!-- Custom styles for this page -->
+<link href="/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+<!-- Page level plugins -->
+<script src="/vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+<!-- Page level custom scripts -->
+<script src="/js/chart/datatables.js"></script>
 
 <!-- Page level plugins -->
 <script src="/vendor/chart.js/Chart.min.js"></script>
@@ -305,10 +229,10 @@ dashboard page, and also all the script and plugin css js resources -->
     //------------ Pie Chart -------------
     var _plabels={!! json_encode($plabels) !!};
     var _pdata={!! json_encode($pdata) !!};
-   
 </script>
 <!-- Page level custom scripts -->
 <script src="/js/chart/chart-area.js"></script>
 <script src="/js/chart/chart-pie.js"></script>
 
+@endsection
 @endsection

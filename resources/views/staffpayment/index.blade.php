@@ -62,7 +62,7 @@
 <script src="{{asset('public')}}/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
 <!-- Page level custom scripts -->
-<script src="{{asset('public')}}/js/demo/datatables-demo.js"></script>
+<script src="/js/chart/datatables.js"></script>
 
 @endsection
 

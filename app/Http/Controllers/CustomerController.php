@@ -118,8 +118,8 @@ class CustomerController extends Controller
 
         $input = $request->all();
         if($request->hasFile('photo')){
-            $extension = $image->getClientOriginalExtension();
             $image=$request->file('photo');
+            $extension = $image->getClientOriginalExtension();
             $reImage = $image->getClientOriginalName();
             $dest=public_path('/images');
             $image->move($dest,$reImage);

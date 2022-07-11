@@ -45,17 +45,8 @@ class BookingController extends Controller
             'room_id'=>'required',
             'checkin_date'=>'required',
             'checkout_date'=>'required',
+            'total_adults'=>'required',
         ]);
-
-        $data=new Booking;
-        $data->customer_id=$request->customer_id;
-        $data->room_id=$request->room_id;
-        $data->checkin_date=$request->checkin_date;
-        $data->checkout_date=$request->checkout_date;
-        $data->total_adults=$request->total_adults;
-        $data->total_children=$request->total_children;
-        $data->save();
-
 
         if($request->ref=='front'){
             $sessionData=[
@@ -69,9 +60,40 @@ class BookingController extends Controller
                 'ref'=>$request->ref
             ];
             session($sessionData);
-            return redirect('booking')->with('success','Booking has been created.');
+            \Stripe\Stripe::setApiKey('sk_test_51LJvPoDPi41w2DPReBnGhYDyvh4NRhc61JeBvfjbiC72HJVT2yKFd09lyhWYSUhe4tD5gVhF2yEWhVKGEzRLPLnq00HKA7LWLx');
+            $session = \Stripe\Checkout\Session::create([
+                'line_items' => [[
+                  'price_data' => [
+                    'currency' => 'myr',
+                    'product_data' => [
+                      'name' => 'Room-Booking',
+                    ],
+                    'unit_amount' => 2000*100,
+                  ],
+                  'quantity' => 1,
+                ]],
+                'mode' => 'payment',
+                'success_url' => 'http://localhost:8000/booking/success?session_id={CHECKOUT_SESSION_ID}',
+                'cancel_url' => 'http://localhost:8000/booking/fail',
+            ]);
+            return redirect($session->url);
+        }else{
+            $data=new Booking;
+            $data->customer_id=$request->customer_id;
+            $data->room_id=$request->room_id;
+            $data->checkin_date=$request->checkin_date;
+            $data->checkout_date=$request->checkout_date;
+            $data->total_adults=$request->total_adults;
+            $data->total_children=$request->total_children;
+            if($request->ref=='front'){
+                $data->ref='customer';
+            }else{
+                $data->ref='admin';
+            }
+            $data->save();
+
+            return redirect('admin/booking/create')->with('success','Data has been added.');
         }
-        return redirect('admin/booking/create')->with('success','Data has been added.');
     }
 
     /**
@@ -82,7 +104,8 @@ class BookingController extends Controller
      */
     public function show($id)
     {
-        //
+        $data=Booking::find($id);
+        return view('booking.show',['data'=>$data]);
     }
 
     /**
@@ -116,7 +139,8 @@ class BookingController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Booking::where('id',$id)->delete();
+        return redirect('admin/booking')->with('success','Booking has been deleted.');
     }
 
     //Check Available Rooms
@@ -136,5 +160,31 @@ class BookingController extends Controller
     {
         $customers=Customer::all();
         return view('frontendBooking');
+    }
+
+    function booking_payment_success(Request $request){
+        \Stripe\Stripe::setApiKey('sk_test_51LJvPoDPi41w2DPReBnGhYDyvh4NRhc61JeBvfjbiC72HJVT2yKFd09lyhWYSUhe4tD5gVhF2yEWhVKGEzRLPLnq00HKA7LWLx');
+        $session = \Stripe\Checkout\Session::retrieve($request->get('session_id'));
+        $customer = \Stripe\Customer::retrieve($session->customer);
+        if($session->payment_status=='paid'){
+            $data=new Booking;
+            $data->customer_id=session('customer_id');
+            $data->room_id=session('room_id');
+            $data->checkin_date=session('checkin_date');
+            $data->checkout_date=session('checkout_date');
+            $data->total_adults=session('total_adults');
+            $data->total_children=session('total_children');
+            if(session('ref')=='front'){
+                $data->ref='customer';
+            }else{
+                $data->ref='admin';
+            }
+            $data->save();
+            return view('booking.success');
+        }
+    }
+
+    function booking_payment_fail(Request $request){
+        return view('booking.failure');
     }
 }

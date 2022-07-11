@@ -157,9 +157,17 @@
 
             <!-- Booking -->
             <li class="nav-item">
-                <a class="nav-link" href="{{url('admin/booking/create')}}">
+                <a class="nav-link @if(!request()->is('admin/booking*')) collapsed @endif" href="#" data-toggle="collapse" data-target="#booking"
+                    aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-hotel"></i>
-                    <span>Bookings</span></a>
+                    <span>Booking</span>
+                </a>
+                <div id="booking" class="collapse @if(request()->is('admin/staff*')) show @endif" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{url('admin/booking/create')}}">Add New</a>
+                        <a class="collapse-item" href="{{url('admin/booking')}}">View All</a>
+                    </div>
+                </div>
             </li>
 
               <!--Logout -->

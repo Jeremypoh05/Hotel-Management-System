@@ -41,6 +41,7 @@ class AdminController extends Controller
     }
 
     function dashboard(){
+        $bookingHistory=Booking::all();
         $bookings=Booking::selectRaw('count(id) as total_bookings,checkin_date')->groupBy('checkin_date')->get();
         $labels=[];
         $data=[];
@@ -67,6 +68,6 @@ class AdminController extends Controller
         // echo '<pre>'; 
         // print_r($rtbookings);
 
-        return view('dashboard',['labels'=>$labels,'data'=>$data,'plabels'=>$plabels,'pdata'=>$pdata]);
+        return view('dashboard',['labels'=>$labels,'data'=>$data,'plabels'=>$plabels,'pdata'=>$pdata],['bookingdata'=>$bookingHistory ]);
     }
 }

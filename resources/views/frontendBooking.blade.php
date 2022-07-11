@@ -87,7 +87,7 @@
                 success:function(res){
                     var _html='';
                     $.each(res.data,function(index,row){
-                        _html+='<option data-price="'+'RM '+row.room.price+'" value="'+row.room.id+'">'+row.room.title+'-'+row.roomtype.type+'</option>';
+                        _html+='<option data-price="'+'RM '+row.room.price+'" value="'+row.room.id+'">'+row.roomtype.type+'-'+row.room.title+'</option>';
                     });
                     $(".room-list").html(_html);
 

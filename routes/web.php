@@ -90,7 +90,9 @@ Route::get('customer/register',[CustomerController::class,'register']);
 Route::get('customer/logout',[CustomerController::class,'logout']);
 //Frontend Booking 
 Route::get('booking',[BookingController::class,'frontend_booking']);
-
-
+//Frontend Succesfully Booking Page 
+Route::get('booking/success',[BookingController::class,'booking_payment_success']);
+//Frontend Fail Booking Page 
+Route::get('booking/fail',[BookingController::class,'booking_payment_fail']);
 Auth::routes();
 
