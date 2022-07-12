@@ -1,6 +1,11 @@
 @extends('frontendlayout')
 @section('title','Traders')
 @section('content')
+<style>
+  .hide{
+    display:none;
+  }
+</style>
     <!--Landing Page-->
     <section class="home">
         <div class="media-icons">
@@ -69,7 +74,22 @@
       </div>
     </div>
   </section>
+   
+<!--Lightbox Gallery-->
+<div class="lightBox-container">
+        <div class="lightBox-gallery">
+        @if($room)
+        @foreach($room as $r)   
+            <h1>Price: {{$r->price}}</h1>
+            <a href="{{url('viewRoom/'.Str::slug($r->title).'/'.$r->id)}}">Read More
+          </a>   
+          @endforeach
+          @endif
+        </div>
+    </div>
 
+    
+    <!--Lightbox Gallery-->
     <div class="lightBox-container">
         <div class="lightBox-gallery">
         @foreach($gallery as $g) 

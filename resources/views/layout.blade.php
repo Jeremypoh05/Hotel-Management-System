@@ -43,7 +43,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-hotel"></i>                
                 </div>
-                <div class="sidebar-brand-text mx-3">Hotel Managament</div>
+                <div class="sidebar-brand-text mx-3">Traders</div>
             </a>
 
             <!-- Divider -->
@@ -110,17 +110,17 @@
                 </div>
             </li>
 
-             <!--Gallery -->
-             <li class="nav-item">
-                <a class="nav-link @if(!request()->is('admin/gallery*')) collapsed @endif" href="#" data-toggle="collapse" data-target="#gallery"
+            <!-- Booking -->
+            <li class="nav-item">
+                <a class="nav-link @if(!request()->is('admin/booking*')) collapsed @endif" href="#" data-toggle="collapse" data-target="#booking"
                     aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-images"></i>
-                    <span>Gallery</span>
+                    <i class="fas fa-hotel"></i>
+                    <span>Booking</span>
                 </a>
-                <div id="gallery" class="collapse @if(request()->is('admin/gallery*')) show @endif" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="booking" class="collapse @if(request()->is('admin/staff*')) show @endif" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{url('admin/gallery/create')}}">Add New</a>
-                        <a class="collapse-item" href="{{url('admin/gallery')}}">View All</a>
+                        <a class="collapse-item" href="{{url('admin/booking/create')}}">Add New</a>
+                        <a class="collapse-item" href="{{url('admin/booking')}}">View All</a>
                     </div>
                 </div>
             </li>
@@ -155,17 +155,32 @@
                 </div>
             </li>
 
-            <!-- Booking -->
-            <li class="nav-item">
-                <a class="nav-link @if(!request()->is('admin/booking*')) collapsed @endif" href="#" data-toggle="collapse" data-target="#booking"
+             <!--Gallery -->
+             <li class="nav-item">
+                <a class="nav-link @if(!request()->is('admin/gallery*')) collapsed @endif" href="#" data-toggle="collapse" data-target="#gallery"
                     aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-hotel"></i>
-                    <span>Booking</span>
+                    <i class="fas fa-images"></i>
+                    <span>Gallery</span>
                 </a>
-                <div id="booking" class="collapse @if(request()->is('admin/staff*')) show @endif" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="gallery" class="collapse @if(request()->is('admin/gallery*')) show @endif" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{url('admin/booking/create')}}">Add New</a>
-                        <a class="collapse-item" href="{{url('admin/booking')}}">View All</a>
+                        <a class="collapse-item" href="{{url('admin/gallery/create')}}">Add New</a>
+                        <a class="collapse-item" href="{{url('admin/gallery')}}">View All</a>
+                    </div>
+                </div>
+            </li>
+
+                <!-- Service -->
+                <li class="nav-item">
+                <a class="nav-link @if(!request()->is('admin/service*')) collapsed @endif" href="#" data-toggle="collapse" data-target="#service"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-hands-helping"></i>
+                    <span>Service</span>
+                </a>
+                <div id="service" class="collapse @if(request()->is('admin/service*')) show @endif" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{url('admin/service/create')}}">Add New</a>
+                        <a class="collapse-item" href="{{url('admin/service')}}">View All</a>
                     </div>
                 </div>
             </li>

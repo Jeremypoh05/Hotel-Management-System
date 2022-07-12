@@ -28,7 +28,16 @@
                         <th>Action</th>
                     </tr>
                 </thead>
-                
+                <tfoot> 
+                    <tr>
+                        <th>#</th>
+                        <th>Type</th>
+                        <th>Price</th>
+                        <th>Detail</th>
+                        <th>Gallery Image</th>
+                        <th>Action</th>
+                    </tr>
+                </tfoot>
                 <tbody>
                 @if($data)
                     @foreach($data as $d)

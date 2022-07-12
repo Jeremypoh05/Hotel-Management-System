@@ -40,11 +40,10 @@ class RoomController extends Controller
      */
     public function store(Request $request)
     {
-
         $data=new Room;
         $data->room_type_id=$request->rt_id;  //select the room_type_id from database and request rt_id, match with the create.blade.php (select and option part)
         $data->title=$request->title; //this "title" must match with the create.blade.php title name
-        $data->price=$request->room_price;
+        $data->price=$request->price;
         $data->save();
 
         $input = $request->all();
@@ -107,7 +106,7 @@ class RoomController extends Controller
         $data= Room::find($id);
         $data->room_type_id=$request->rt_id;
         $data->title=$request->title; 
-        $data->price=$request->room_price;
+        $data->price=$request->price;
         $data->save();
 
         $input = $request->all();

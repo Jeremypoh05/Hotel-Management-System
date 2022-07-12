@@ -22,11 +22,20 @@
                     <tr>
                         <th>#</th>
                         <th>Room Type</th>
-                        <th>Title</th>
+                        <th>Name</th>
+                        <th>Price</th>
                         <th>Action</th>
                     </tr>
                 </thead>
-                
+                <tfoot> 
+                    <tr>
+                        <th>#</th>
+                        <th>Room Type</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Action</th>
+                    </tr>
+                </tfoot>
                 <tbody>
                 @if($data)
                     @foreach($data as $d)
@@ -34,6 +43,7 @@
                         <td>{{$d->id}}</td> <!--The id match from the database column-->
                         <td>{{$d->roomtype->type}} <!--the "roomtype" is the function from the model -room which shows the relationship between room and roomtype(Room belongs to RoomType)-->
                         <td>{{$d->title}}</td> <!--The title match from the database column-->
+                        <th>{{$d->price}}</th>
                         <td>
                             <a href="{{url('admin/rooms/'.$d->id)}}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>
                             <a href="{{url('admin/rooms/'.$d->id).'/edit'}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>

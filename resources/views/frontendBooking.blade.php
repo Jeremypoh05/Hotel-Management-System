@@ -46,19 +46,15 @@
 						<p>Available Rooms:</p>
 						<select class="room-list" name="room_id"></select>
 					</div>
-				
-                
-
-					<div class="booking-form-field">
-						<p>Children:</p>
-                        <td><input name="total_children" type="text" class="form-control" /></td>
-					</div>
-
                     <div class="booking-form-field">
 						<p>Adults:</p>
                         <td><input name="total_adults" type="text" class="form-control" /></td>
 					</div>
-
+                    <div class="booking-form-field">
+						<p>Children:</p>
+                        
+                        <td><input name="total_children" type="text" class="form-control" /></td>
+					</div>
 					<div class="booking-form-field">
 						<p class="show-room-price">Total Price: RM299</p>
 					</div>

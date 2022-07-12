@@ -40,6 +40,10 @@
                 <td><input value="{{$data->title}}" name="title" type="text" class="form-control" /></td>
             </tr>
             <tr>
+                <th>Price</th>
+                <td><input value="{{$data->price}}" name="price" type="text" class="form-control" /></td>
+            </tr>
+            <tr>
                 <th>Gallery Images</th>
                 <td>
                     <table class="table table-bordered mt-3">

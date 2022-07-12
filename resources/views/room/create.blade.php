@@ -46,7 +46,7 @@
             </tr>
             <tr>
                 <th>Price</th>
-                <td><input name="room_price"class="form-control" /></td>
+                <td><input name="price"class="form-control" /></td>
             </tr>
             <tr>
                 <th>Gallery</th>

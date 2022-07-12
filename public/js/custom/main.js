@@ -1,3 +1,5 @@
+//-------------------------- Home Page ------------------------------ //
+
 // Grab elements
 const selectElement = (selector) => {
     const element = document.querySelector(selector);
@@ -39,8 +41,8 @@ window.addEventListener('keyup', (event) => {
     if(event.key === 'Escape') searchContainer.classList.remove('activated');
 });
 
-//Swiper slider
-var swiper = new Swiper(".homepage-bg-slider-thumbs", {
+//Swiper slider for landing page
+var homeSwiper = new Swiper(".homepage-bg-slider-thumbs", {
     loop: true,
     spaceBetween: 0,
     slidesPerView: 0,
@@ -50,12 +52,12 @@ var swiper2 = new Swiper(".homepage-bg-slider", {
     loop: true,
     spaceBetween: 0,
     thumbs: {
-        swiper: swiper,
+        swiper: homeSwiper,
     },
 });
 
-//---------Popular Image----------
- class CitiesSlider extends React.Component {
+//------------ Popular Places Slider -------------
+class CitiesSlider extends React.Component {
     constructor(props) {
       super(props);
   
@@ -156,11 +158,29 @@ var swiper2 = new Swiper(".homepage-bg-slider", {
   
   ReactDOM.render(React.createElement(CitiesSlider, { slides: slides }), document.querySelector('#travel'));
 
-//---------End of Popular Image----------
-  lightbox.option({
-    disableScrolling: true,
-    maxWidth: 700,
-    maxHeight: 500
-  })
-//---------Lightbox Gallery----------
+//-----x----End of Popular Places Slider -----x-----
 
+//Lightbox Gallery
+lightbox.option({
+  disableScrolling: true,
+  maxWidth: 700,
+  maxHeight: 500
+})
+
+//Room Section 
+var thumbnailRoom = new Swiper(".thumbnail-room-swiper", {
+  spaceBetween: 10,
+  slidesPerView: 4,
+  freeMode: true,
+  watchSlidesProgress: true,
+});
+var mainRoom = new Swiper(".main-room-swiper", {
+  spaceBetween: 10,
+  navigation: {
+    nextEl: ".room-next-btn",
+    prevEl: ".room-prev-btn",
+  },
+  thumbs: {
+    swiper: thumbnailRoom,
+  },
+});

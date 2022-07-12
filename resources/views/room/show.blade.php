@@ -16,8 +16,16 @@
         <div class="table-responsive">
             <table class="table table-bordered">
             <tr>
-                <th>Title</th>
+                <th>Room Type</th>
+                <td>{{$data->roomtype->type}}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
                 <td>{{$data->title}}</td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>{{$data->price}}</td>
             </tr>
             <tr>
                 <th>Gallery Images</th>
