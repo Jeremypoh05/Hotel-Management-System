@@ -54,7 +54,7 @@
                 </div>
                 <!-- /.container-fluid -->
 
-@section('scripts')
+ @section('scripts')
 <!-- Custom styles for this page -->
 <link href="{{asset('public')}}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 <!-- Page level plugins -->

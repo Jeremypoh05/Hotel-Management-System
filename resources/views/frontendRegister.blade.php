@@ -40,8 +40,9 @@
 
                     <div class="field">
                     <div class="input-field">
-                        <input type="password" class="RegisPassword" placeholder="Enter your password" name="password" autofocus>
-                        <i class="uil uil-lock icon"></i>
+                        <input type="password" class="RegisPassword" id="RegisPassword" placeholder="Enter your password" name="password" 
+                         pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"required>
+                        <i class="uil uil-lock icon pw"></i>
                         <i class="uil uil-eye-slash showHidePw PwRegis"></i>
                     </div>
                     <div class="indicator">
@@ -87,4 +88,5 @@
     </div>
     </div>
 </div>
-@endsection('content')
+
+@endsection

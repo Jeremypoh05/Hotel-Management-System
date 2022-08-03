@@ -110,8 +110,8 @@ dashboard page, and also all the script and plugin css js resources -->
                              <tr>
                                  <th>#</th>
                                  <th>Customer</th>
-                                 <th>Room No.</th>
                                  <th style="max-width:50px">Room Type</th>
+                                 <th>Name</th>
                                  <th style="max-width:70px">CheckIn Date</th>
                                  <th style="max-width:70px">CheckOut Date</th>
                                  <th>Price</th>
@@ -123,8 +123,8 @@ dashboard page, and also all the script and plugin css js resources -->
                              <tr>
                                  <th>#</th>
                                  <th>Customer</th>
-                                 <th>Room No.</th>
-                                 <th>Room Type</th>
+                                 <th>Room Type.</th>
+                                 <th>Room Name</th>
                                  <th>CheckIn Date</th>
                                  <th>CheckOut Date</th>
                                  <th>Price</th>
@@ -137,8 +137,8 @@ dashboard page, and also all the script and plugin css js resources -->
                              <tr>
                                  <td>{{$booking->id}}</td>
                                  <td>{{$booking->customer->full_name}}</td><!--customer is the function of reletionship that created from booking model-->
-                                 <td>{{$booking->room->title}}</td> <!--room is the function of reletionship that created from booking model-->
                                  <td>{{$booking->room->roomtype->type}}</td><!--roomtype is the function of reletionship that created from room model-->
+                                 <td>{{$booking->room->title}}</td> <!--room is the function of reletionship that created from booking model-->
                                  <td>{{$booking->checkin_date}}</td>
                                  <td>{{$booking->checkout_date}}</td>
                                  <td>{{$booking->room->price}}</td>
@@ -193,12 +193,14 @@ dashboard page, and also all the script and plugin css js resources -->
                     <canvas id="myPieChart"></canvas>
                 </div>
                 <div class="mt-4 text-center small">
+                    <!--  
                     @foreach($plabels as $label)
                     <span class="mr-2">
                         <i class="fas fa-circle text-primary"></i> {{$label}}
                         <i class="fas fa-circle text-success"></i> {{$label}}
                     </span>
                     @endforeach
+                    -->
                 </div>
             </div>
         </div>

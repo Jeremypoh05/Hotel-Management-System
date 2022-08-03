@@ -1,4 +1,18 @@
 //-------------------------- Home Page ------------------------------ //
+const hamburger = document.querySelector(".hamburger");
+const navMenu = document.querySelector(".nav-menu");
+
+hamburger.addEventListener("click", mobliemmenu);
+
+function mobliemmenu() {
+  hamburger.classList.toggle("active");
+  navMenu.classList.toggle("active");
+}
+
+window.addEventListener("scroll", function() {
+  var header = document.querySelector("header");
+  header.classList.toggle("sticky", window.scrollY > 0)
+})
 
 // Grab elements
 const selectElement = (selector) => {
@@ -7,32 +21,9 @@ const selectElement = (selector) => {
     throw new Error(`Something went wrong! Make sure that ${selector} exists/is typed correctly.`);  
 };
 
-//Nav styles on scroll
-const scrollHeader = () =>{
-    const navbarElement = selectElement('#header');
-    if(this.scrollY >= 15) {
-        navbarElement.classList.add('activated');
-    } else {
-        navbarElement.classList.remove('activated');
-    }
-}
-
-window.addEventListener('scroll', scrollHeader);
-
-// Open menu & search pop-up
-const menuToggleIcon = selectElement('#menu-toggle-icon');
 const formOpenBtn = selectElement('#search-icon');
 const formCloseBtn = selectElement('#form-close-btn');
 const searchContainer = selectElement('#search-form-container');
-
-const toggleMenu = () =>{
-    const mobileMenu = selectElement('#menu');
-    mobileMenu.classList.toggle('activated');
-    menuToggleIcon.classList.toggle('activated');
-}
-
-menuToggleIcon.addEventListener('click', toggleMenu);
-
 // Open/Close search form popup
 formOpenBtn.addEventListener('click', () => searchContainer.classList.add('activated'));
 formCloseBtn.addEventListener('click', () => searchContainer.classList.remove('activated'));
@@ -41,20 +32,94 @@ window.addEventListener('keyup', (event) => {
     if(event.key === 'Escape') searchContainer.classList.remove('activated');
 });
 
+
 //Swiper slider for landing page
 var homeSwiper = new Swiper(".homepage-bg-slider-thumbs", {
     loop: true,
     spaceBetween: 0,
     slidesPerView: 0,
     allowTouchMove: false,
+    grabCursor: true,
+
 });
 var swiper2 = new Swiper(".homepage-bg-slider", {
     loop: true,
     spaceBetween: 0,
+    navigation: {
+      nextEl: ".landing-page-next",
+      prevEl: ".landing-page-prev",
+    },
+
     thumbs: {
         swiper: homeSwiper,
     },
 });
+
+
+/*==================== VIDEO ====================*/
+const videoFile = document.getElementById('video-file'),
+      videoButton = document.getElementById('video-button'),
+      videoIcon = document.getElementById('video-icon')
+
+function playPause(){ 
+    if (videoFile.paused){
+        // Play video
+        videoFile.play()
+        // We change the icon
+        videoIcon.classList.add('ri-pause-line')
+        videoIcon.classList.remove('ri-play-line')
+    }
+    else {
+        // Pause video
+        videoFile.pause(); 
+        // We change the icon
+        videoIcon.classList.remove('ri-pause-line')
+        videoIcon.classList.add('ri-play-line')
+
+    }
+}
+videoButton.addEventListener('click', playPause)
+
+function finalVideo(){
+    // Video ends, icon change
+    videoIcon.classList.remove('ri-pause-line')
+    videoIcon.classList.add('ri-play-line')
+}
+// ended, when the video ends
+videoFile.addEventListener('ended', finalVideo)
+
+
+//------------ Subscribe Mail -------------//
+const subscribeForm = document.querySelector(".subscribe-form"),
+statusTxt = subscribeForm.querySelector(".error-msg span");
+
+subscribeForm.onsubmit = (e)=>{
+    e.preventDefault();
+    statusTxt.style.color = "#0D6EFD";
+    statusTxt.style.display = "block";
+    statusTxt.innerText = "Wait for a moment...";
+    subscribeForm.classList.add("disabled");
+  
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "subscribe.php", true);
+    xhr.onload = ()=>{
+      if(xhr.readyState == 4 && xhr.status == 200){
+        let response = xhr.response;
+        if(response.indexOf("Email field is required!") != -1 || response.indexOf("Enter a valid email address!") != -1 || response.indexOf("Sorry, failed to subscribe!") != -1){
+          statusTxt.style.color = "red";
+        }else{
+          subscribeForm.reset();
+          setTimeout(()=>{
+            statusTxt.style.display = "none";
+          }, 3000);
+        }
+        statusTxt.innerText = response;
+        subscribeForm.classList.remove("disabled");
+      }
+    }
+    let formData = new FormData(subscribeForm);
+    xhr.send(formData);
+  }
 
 //------------ Popular Places Slider -------------
 class CitiesSlider extends React.Component {

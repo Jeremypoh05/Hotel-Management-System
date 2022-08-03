@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <title>@yield('title')</title>
     <!-- Favicon -->
-    <link rel="icon" type="/image/png" sizes="32x32" href="/images/logo.png">
-    <!-- Remix icons -->
+    <link rel="icon" type="/image/png" sizes="25x25" href="/images/logo2.png">
+    <!-- REMIXICONS -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <!-- Swiper.js styles -->
     <link rel="stylesheet" href="/css/swiper-bundle.min.css"/>
-    <!-- Unicons for social media -->
+    <!-- Unicons for login register -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-    <!-- ===== Animation ====-->
+    <!-- BoxIcons -->
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <!--  Animation -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <!-- ===== Fontawesome CDN ====-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"/>
@@ -25,77 +27,78 @@
 </head>
 <body>
     <!-- ---------------------------  Header(Navigation) --------------------------------------------- -->
-    <header class="header" id="header">
-      
-        <nav class="navbar container">
-            <a href="./index.html">
-                <h2 class="logo">Traders</h2>
-            </a>
+    <section class="head">
+    <div class="container flex">
+      <div class="scoial">
+        <a href="https://www.facebook.com"><i class="fab fa-facebook-f"></i></a>
+        <i class="fab fa-twitter"></i>
+        <i class="fab fa-instagram"></i>
+        <i class="fab fa-youtube"></i>
+      </div>
+      <div class="logo">
+        <h1 class="brand-title">TRADERS</h1>
+      </div>
+      <div class="head-address">
+        <i class="fas fa-map-marker-alt"></i>
+        <span>Kuala Lumpur City Centre, 50088 KL.</span>
+      </div>
+    </div>
+  </section>
 
-            <div class="menu" id="menu">
-                <ul class="list">
-                    <li class="list-item">
-                        <a href="#"class="list-link current">Home</a>
-                    </li>
-                    <li class="list-item">
-                        <a href="#" class="list-link">Rooms</a>
-                    </li>
-                    <li class="list-item">
-                        <a href="#" class="list-link">Gallery</a>
-                    </li>
-                    <li class="list-item">
-                      <a href="#" class="list-link"></i>Contact</a>
-                    </li>
-                    <li class="list-item">
-                        <a href="#" class="list-link"></i>About</a>
-                    </li>
-                    @if(Session::has('customerlogin'))
-                    <li class="list-item">
-                        <a href="{{url('customer/logout')}}" class="list-link">Logout</a>
-                    </li>
-                    @else
-                    <li class="list-item">
-                        <a href="{{url('customer/login')}}" class="list-link">Sign in</a>
-                    </li>
-                    <li class="list-item">
-                        <a href="{{url('customer/register')}}" class="list-link">Sign up</a>
-                    </li>
-                    @endif
-                    
-                </ul>
-            </div>
+  <hr class="container">
+  <header class="header">
+    <div class="container">
+      <nav class="navbar flex">
+        <div class="sticky_logo">
+          <a href="{{url('home')}}"><img src="/images/logo.png" alt=""></a>
+        </div>
 
-            <div class="list list-right">
-                <button class="btn place-items-center" id="theme-toggle-btn">
-                    <i class="ri-sun-line sun-icon"></i>
-                    <i class="ri-moon-line moon-icon"></i>
-                </button>
+        <div class="menu-items">
+        <ul class="nav-menu">
+          <li> <a href="{{url('home')}}">Home</a> </li>
+          <li> <a href="#room">Room</a> </li>
+          <li> <a href="{{route('galleryPage')}}">gallery</a> </li>
+          <li> <a href="#about">about</a> </li>
+          <li> <a href="{{route('contactPage')}}">contact</a> </li>
+          @if(Session::has('customerlogin'))
+          <li> <a href="{{url('customer/logout')}}">Logout</a> </li>
+          @else
+          <li> <a href="{{url('customer/login')}}">Sign In</a> </li>
+          @endif
+          <div class="home-booking-btn">
+               @if(Session::has('customerlogin'))
+               <a href="{{url('booking')}}">
+                   <span>Booking</span>
+               </a>
+               @else
+               <a href="{{url('customer/login')}}">
+                   <span>Booking</span>
+               </a>
+               @endif
+           </div>
+        </ul>
 
-                <button class="btn place-items-center" id="search-icon">
-                    <i class="ri-search-line"></i>
-                </button>
+        <div class="search">
+          <button class="btn place-items-center" id="search-icon">
+            <i class="ri-search-line"></i>
+          </button>  
+        </div>
 
-                <button class="btn place-items-center screen-lg-hidden menu-toggle-icon" id="menu-toggle-icon">
-                    <i class="ri-menu-3-line open-menu-icon"></i>
-                    <i class="ri-close-line close-menu-icon"></i>
-                </button>
+        <div class="hamburger">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </div>
 
-
-                @if(Session::has('customerlogin'))
-                <a href="{{url('booking')}}" class="btn sign-up-btn fancy-border screen-sm-hidden">
-                    <span>Booking</span>
-                </a>
-                @else
-                <a href="{{url('customer/login')}}" class="btn sign-up-btn fancy-border screen-sm-hidden">
-                    <span>Booking</span>
-                </a>
-                @endif
-            </div>
-
-        </nav>
-
-    </header>
-
+        <div class="head_contact">
+          <i class="fas fa-phone-volume"></i>
+          <span>+6011 7787888</span>
+        </div>
+      </nav>
+    </div>
+  </header>
+    
       <!-- Search -->
       <div class="search-form-container container" id="search-form-container">
 
@@ -114,6 +117,7 @@
           <i class="ri-close-line"></i>
       </button>
       </div>
+</section>
     <!-- ------------x---------------  Header(Navigation) --------------------------x------------------- -->
       
    	<!--Content -->

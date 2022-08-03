@@ -18,10 +18,16 @@
                 <p>Your booking has been successfully submitted. 
                 <br>Have a good day!<span><i class="fas fa-smile" id="smile"></i></span> 
                 </p> 
+           
             <div class="btn-go-back booking-success">
                 <a href="{{url('/home')}}">Go Back to Home Page
                 <i class="fas fa-arrow-circle-right"></i></a>
             </div>
+            @if(Session::has('data'))
+            <a href="{{route('pdfReport')}}" class="">Download Report</a> 
+            @endif 
+            <!--session('data')[0]->id)-->
+     
        </div>
     </div>
 <!-- /.container-fluid -->

@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\Customer;
 use App\Models\RoomTypes;
 use App\Models\Booking;
+use Illuminate\Support\Facades\Auth;
+use PDF;
+use Session;
 
 class BookingController extends Controller
 {
@@ -68,7 +71,7 @@ class BookingController extends Controller
                     'product_data' => [
                       'name' => 'Room-Booking',
                     ],
-                    'unit_amount' => 2000*100,
+                    'unit_amount' => $request->roomprice*100,
                   ],
                   'quantity' => 1,
                 ]],
@@ -163,6 +166,7 @@ class BookingController extends Controller
     }
 
     function booking_payment_success(Request $request){
+
         \Stripe\Stripe::setApiKey('sk_test_51LJvPoDPi41w2DPReBnGhYDyvh4NRhc61JeBvfjbiC72HJVT2yKFd09lyhWYSUhe4tD5gVhF2yEWhVKGEzRLPLnq00HKA7LWLx');
         $session = \Stripe\Checkout\Session::retrieve($request->get('session_id'));
         $customer = \Stripe\Customer::retrieve($session->customer);
@@ -180,11 +184,33 @@ class BookingController extends Controller
                 $data->ref='admin';
             }
             $data->save();
-            return view('booking.success');
+
+           return view('booking.success');
+            /*$booking = Booking::get();*/
+            /*$booking = Booking::where('id',"=", $id)->first();
+            return view('booking.success', compact('booking'));*/
         }
     }
 
     function booking_payment_fail(Request $request){
         return view('booking.failure');
     }
+
+    public function pdfReport(Request $request)
+    {
+        $customerid=$request->session()->get('customer_id');
+        $booking=DB::table('bookings')
+        ->leftjoin('customers','customers.id','=','bookings.customer_id')
+        ->leftjoin('rooms','rooms.id','=','bookings.room_id')
+        ->leftjoin('room_types', 'room_types.id', '=', 'rooms.room_type_id')
+        ->select('bookings.*','rooms.title as roomTitle','rooms.price as roomPrice',
+                  'room_types.type as roomType', 'customers.id as cusID')
+        ->where('bookings.id','=',$customerid)
+        ->get();
+  
+        $pdf = PDF::loadView('myPDF', compact('booking'));
+        
+        return $pdf->download('BookingHistory.pdf');
+    }
+
 }

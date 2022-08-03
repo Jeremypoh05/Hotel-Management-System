@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Customer;
+use App\Models\Booking;
 
 class CustomerController extends Controller
 {
@@ -36,7 +37,7 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-
+        
         $request->validate([
             'full_name'=>'required',
             'email'=>'required|email',

@@ -39,11 +39,11 @@
             </tr>
             <tr>
                 <th>CheckIn Date <span class="text-danger">*</span></th>
-                <td><input name="checkin_date" type="date" class="form-control checkin-date" /></td>
+                <td><input name="checkin_date" type="date" id="checkin_date" class="form-control checkin-date" /></td>
             </tr>
             <tr>
                 <th>CheckOut Date <span class="text-danger">*</span></th>
-                <td><input name="checkout_date" type="date" class="form-control" /></td>
+                <td><input name="checkout_date" type="date" id="checkout_date" class="form-control" /></td>
             </tr>
             <tr>
                 <th>Avaiable Rooms <span class="text-danger">*</span></th>
@@ -79,6 +79,24 @@
 
 @section('scripts')
 <script type="text/javascript">
+     //Disable previous date
+     var today = new Date();
+     var dd = String(today.getDate()).padStart(2, '0');
+     var mm = String(today.getMonth() + 1).padStart(2, '0');
+     var yyyy = today.getFullYear();
+
+     today = yyyy + '-' + mm + '-' + dd;
+
+     $('#checkin_date').attr('min',today);
+
+     var tomorrow = new Date();
+     var tmrdd = String(tomorrow.getDate()+1).padStart(2, '0');
+     var tmrmm = String(tomorrow.getMonth() + 1).padStart(2, '0');
+     var tmryyyy = tomorrow.getFullYear();
+     tomorrow = yyyy + '-' + mm + '-' + tmrdd; 
+     $('#checkout_date').attr('min',tomorrow);
+
+    //function of showing available rooms
     $(document).ready(function(){
         $(".checkin-date").on('blur',function(){
             var _checkindate=$(this).val();
