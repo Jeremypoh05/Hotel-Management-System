@@ -18,6 +18,7 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
+                                            <th>Name</th>
                                             <th>Testimonial</th>
                                             <th>Action</th>
                                         </tr>
@@ -25,6 +26,7 @@
                                     <tfoot>
                                         <tr>
                                             <th>#</th>
+                                            <th>Name</th>
                                             <th>Testimonial</th>
                                             <th>Action</th>
                                         </tr>
@@ -34,6 +36,7 @@
                                             @foreach($data as $d)
                                             <tr>
                                                 <td>{{$d->id}}</td>
+                                                <td>{{$d->customer->full_name}}</td>
                                                 <td>{{$d->testi_content}}</td>
                                                 <td>
                                                     <a onclick="return confirm('Are you sure to delete this data?')" href="{{url('admin/testimonial/'.$d->id).'/delete'}}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>

@@ -273,7 +273,7 @@
             </div>
         </section>
 
-        <!--==================== Popular Places ====================-->
+        <!--==================== Services ====================-->
         <section class="section home-service">
           <div class="heading flex-center">
             <h1>Services</h1>
@@ -393,37 +393,6 @@
         @endif
       </div>
   </div>
-
-
-  <div class="section testimonial">
-    <div class="slide-container swiper"> 
-            <div class="slide-content">
-                <div class="card-wrapper swiper-wrapper">
-
-                @foreach($testimonials as $testi)
-                    <div class="card swiper-slide">
-                        <div class="image-content">
-                            <span class="overlay"></span>
-                            <div class="card-image">
-                                <img src="{{ asset('images/') }}/{{$testi->customer->photo}}" alt="" class="card-img">
-                            </div>
-                        </div>
-                       
-                        <div class="card-content">
-                            <h2 class="name">{{$testi->customer->full_name}}</h2>
-                            <p class="description">{{$testi->testi_content}}</p>
-                            <button class="button">View More</button>
-                        </div>
-                      </div>   
-                      @endforeach                
-                    </div>
-                  </div>
-            <!-- Add Pagination -->             
-            <div class="swiper-button-next swiper-navBtn"></div>
-            <div class="swiper-button-prev swiper-navBtn"></div>
-            <div class="swiper-pagination"></div>
-          </div>
-      </div>
 
     <!--This id will be use at the main js-->
     <div id="travel"></div>

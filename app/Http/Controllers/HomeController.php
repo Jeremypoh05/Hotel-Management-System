@@ -29,9 +29,8 @@ class HomeController extends Controller
     {
         $room=Room::all();
         $services=Service::all();
-        $testimonials=Testimonial::all();
         $booking=Booking::all();
-        return view('home',['room'=>$room,'booking'=>$booking,'services'=>$services,'testimonials'=>$testimonials]);
+        return view('home',['room'=>$room,'booking'=>$booking,'services'=>$services]);
        // return view('home')->with('gallery',$gallery);
     }
 
@@ -69,6 +68,13 @@ class HomeController extends Controller
         $gallery=Gallery::all();
         
         return view('frontendGalleryPage',['gallery'=>$gallery]);
+       // return view('home')->with('gallery',$gallery);
+    }
+
+    public function aboutPage()
+    {
+        $testimonials=Testimonial::all();
+        return view('frontendAboutPage',['testimonials'=>$testimonials]);
        // return view('home')->with('gallery',$gallery);
     }
 }

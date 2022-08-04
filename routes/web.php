@@ -113,6 +113,8 @@ Route::get('/pdfReport',[BookingController::class, 'pdfReport'])->name('pdfRepor
 Route::get('/gallery',[HomeController::class,'galleryPage'])->name('galleryPage');
 //Frontend Contact Page
 Route::get('/contact',[HomeController::class,'contactPage'])->name('contactPage');
+//Frontend About Page
+Route::get('/about',[HomeController::class,'aboutPage'])->name('aboutPage');
 
 Auth::routes();
 

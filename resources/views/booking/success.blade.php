@@ -24,7 +24,7 @@
                 <i class="fas fa-arrow-circle-right"></i></a>
             </div>
             @if(Session::has('data'))
-            <a href="{{route('pdfReport')}}" class="">Download Report</a> 
+            <a href="{{route('pdfReport')}}" class="download-invoice">Download Your Invoice!!!</a> 
             @endif 
             <!--session('data')[0]->id)-->
      

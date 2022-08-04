@@ -21,6 +21,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"/>
     <!-- Light Box Library CSS -->
     <link rel="stylesheet" href="/css/lightbox.css">
+    <!-- Carousel CSS -->
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
+    <!-- Carousel JS library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"></script>
+
     <!-- Custom styles -->
     <link rel="stylesheet" href="/css/loginRegister.css">
     <link rel="stylesheet" href="/css/style.css">
@@ -55,24 +63,24 @@
 
         <div class="menu-items">
         <ul class="nav-menu">
-          <li> <a href="{{url('home')}}">Home</a> </li>
-          <li> <a href="#room">Room</a> </li>
-          <li> <a href="{{route('galleryPage')}}">gallery</a> </li>
-          <li> <a href="#about">about</a> </li>
-          <li> <a href="{{route('contactPage')}}">contact</a> </li>
+          <li> <a class="menu-link" href="{{url('home')}}">Home</a> </li>
+          <li> <a class="menu-link" href="#room">Room</a> </li>
+          <li> <a class="menu-link" href="{{route('galleryPage')}}">gallery</a> </li>
+          <li> <a class="menu-link" href="{{route('aboutPage')}}">about</a> </li>
+          <li> <a class="menu-link" href="{{route('contactPage')}}">contact</a> </li>
           @if(Session::has('customerlogin'))
-          <li> <a href="{{url('customer/logout')}}">Logout</a> </li>
+          <li> <a class="menu-link" href="{{url('customer/logout')}}">Logout</a> </li>
           @else
-          <li> <a href="{{url('customer/login')}}">Sign In</a> </li>
+          <li> <a class="menu-link" href="{{url('customer/login')}}">Sign In</a> </li>
           @endif
           <div class="home-booking-btn">
                @if(Session::has('customerlogin'))
-               <a href="{{url('booking')}}">
-                   <span>Booking</span>
+               <a class="menu-link" href="{{url('booking')}}">
+                   Booking
                </a>
                @else
-               <a href="{{url('customer/login')}}">
-                   <span>Booking</span>
+               <a class="menu-link" href="{{url('customer/login')}}">
+                   Booking
                </a>
                @endif
            </div>
@@ -135,10 +143,9 @@
 
 <!-- Custom script -->
 <script src="/js/custom/main.js"></script>
+<script src="/js/custom/loginRegister.js"></script>
+<script src="/js/particlesJS/particles.js"></script>
+<script src="/js/particlesJS/app.js"></script>
 
-    <script src="/js/custom/loginRegister.js"></script>
-    <script src="/js/particlesJS/particles.js"></script>
-    <script src="/js/particlesJS/app.js"></script>
-
-    </body>
+</body>
 </html>

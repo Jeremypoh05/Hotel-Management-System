@@ -1,3 +1,11 @@
+//--------------------- Check Current Page  ---------------------------- //
+document.querySelectorAll('.menu-link').forEach(link => {
+  if(link.href === window.location.href){
+    link.setAttribute('aria-current', 'page')
+  }
+})
+
+
 //-------------------------- Home Page ------------------------------ //
 const hamburger = document.querySelector(".hamburger");
 const navMenu = document.querySelector(".nav-menu");

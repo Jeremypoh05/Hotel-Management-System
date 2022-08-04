@@ -65,7 +65,7 @@
           <div class="contact-form-text">Send us a message</div>
         <form action="" method="" class = "contactForm">
           <div class="contact-form-input-box">
-            <input type="text"name="userName" placeholder="Enter your name" >
+            <input type="text"name="userName" placeholder="Enter your name">
           </div>
           <div class="contact-form-input-box">
             <input type="text" name="userEmail" placeholder="Enter your email">
@@ -73,13 +73,22 @@
           <div class="contact-form-input-box">
             <input type="text" name="userNumber" placeholder="Enter your phone number">
           </div>
+          <div class="contact-form-input-box">
+            <select name="userQuery">
+              <option>What's your question related ?</option>
+              <option value="query">Query</option> 
+              <option value="feedback">Feedback</option> 
+              <option value="suggestion">Suggestion</option> 
+            </select>
+          </div>
+         
           <div class="contact-form-input-box message-box">
             <textarea name="userMessage" placeholder="Enter your message"></textarea>
           </div>
           <div class="contact-form-button">
             <input type="submit" value="Send Now" >
             <div class="contact-error-msg">
-                <span>h1sdsdsdsd</span>
+                <span></span>
             </div>
           </div>
         </form>
@@ -87,6 +96,10 @@
       </div>
     </div>
 </section>
+
+<div class = "section map">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3983.7750964258053!2d101.71270561422716!3d3.153916897703508!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc37d3a880566d%3A0x777619bf0fbbc576!2sTraders%20Hotel%20Kuala%20Lumpur!5e0!3m2!1sen!2smy!4v1659511115903!5m2!1sen!2smy" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
 
 <script>
 //------------ Contact Page - send message -------------//
