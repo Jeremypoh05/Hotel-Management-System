@@ -10,7 +10,7 @@
         <div class="room-slider-container">
         <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff"
             class="swiper main-room-swiper">
-            <div class="swiper-wrapper">
+            <div class="swiper-wrapper room-wraper">
             @foreach($roomDetail->roomimgs as $img)
             <div class="swiper-slide room-slide">     
                 <img class="hide" src="{{asset('storage/room/'.$img->img_src)}}"  />        
@@ -24,7 +24,7 @@
             </div>
       
             <div thumbsSlider="" class="swiper thumbnail-room-swiper">
-                <div class="swiper-wrapper">
+                <div class="swiper-wrapper room-wrapper">
                 @foreach($roomDetail->roomimgs as $img)
                  <div class="swiper-slide room-slide">
                     <img src="{{asset('storage/room/'.$img->img_src)}}"  />
@@ -41,20 +41,6 @@
    
 </div>
 
-@if(Session::has('customerlogin'))
-<form style="margin-bot:300px" method="post" onsubmit="myFunction(event)" action="{{route('saveTestimonial')}}">
-		@csrf
-		<table class="table table-bordered">
-			<tr>
-				<th>Testimonial<span class="text-danger">*</span></th>
-				<td><textarea name="testi_content" class="form-control" rows="8"></textarea></td>
-			</tr>
-			<tr>
-				<td colspan="2"><input type="submit" class="btn btn-primary" /></td>
-			</tr>
-		</table>
-	</form>
-  @endif
     <!----------------x------------- End of Room Section ------------x-------------->
 <!--Swiper JS library-->
 <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>

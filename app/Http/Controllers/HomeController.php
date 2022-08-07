@@ -27,10 +27,12 @@ class HomeController extends Controller
      */
     public function homepage()
     {
+        $testimonials=Testimonial::all();
+
         $room=Room::all();
         $services=Service::all();
         $booking=Booking::all();
-        return view('home',['room'=>$room,'booking'=>$booking,'services'=>$services]);
+        return view('home',['room'=>$room,'booking'=>$booking,'testimonials'=>$testimonials,'services'=>$services]);
        // return view('home')->with('gallery',$gallery);
     }
 

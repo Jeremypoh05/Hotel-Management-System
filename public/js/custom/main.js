@@ -129,6 +129,8 @@ subscribeForm.onsubmit = (e)=>{
     xhr.send(formData);
   }
 
+
+
 //------------ Popular Places Slider -------------
 class CitiesSlider extends React.Component {
     constructor(props) {

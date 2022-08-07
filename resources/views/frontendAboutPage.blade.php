@@ -59,38 +59,51 @@
     </div>
   </section>
 
-  <section class="section testimonials">
-    <div class="testimonial-container flex-center">
-    @foreach($testimonials as $testi)
-      <div class="owl-carousel owl-carousel2 owl-theme flex-center">
-        <div class="testimonial-item">
-          <i class="fa-solid fa-quote-right"></i>
-          <p>{{$testi->testi_content}}</p>
-          <h3>{{$testi->customer->full_name}}</h3>
-        </div> 
-        @endforeach                       
+  <section class="section testi">
+    <div class="heading flex-center">
+        <h1>Customers</h1>
+        <h2>Testimonials</h2>
+    </div>
+    <div class="testimonial">
+      <div class="testimonial-container mySwiper">
+        <div class="testi-content swiper-wrapper">
+        @foreach($testimonials as $testi)
+          <div class="testimonial-slide swiper-slide">
+            <i class="fa-solid fa-quote-right"></i>
+            <p>{{$testi->testi_content}}</p>
+            <h1>{{$testi->customer->full_name}}</h1>
+          </div>
+          @endforeach                
+         </div>
+        <div class="swiper-button-next testimonial-next testi-nav"></div>
+        <div class="swiper-button-prev testimonial-prev testi-nav"></div>
+        <div class="testi-pagination">
+          <div class="swiper-pagination testimonial-pagination"></div>
+        </div>
+
       </div>
     </div>
-  </section>
+    </section>
 
-
+  <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>  
   <script>
-    $('.owl-carousel2').owlCarousel({
-      loop: true,
-      margin: 0,
-      nav: false,
-      dots: true,
-      responsive: {
-        0: {
-          items: 1
-        },
-        768: {
-          items: 1,
-        },
-        1000: {
-          items: 1
-        }
-      }
-    })
+  var testimonialSwiper = new Swiper(".testimonial-container", {
+    slidesPerView: 1,
+    grabCursor: true,
+    loop: true,
+    fade: 'true',
+    pagination: {
+      el: ".testimonial-pagination",
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".testimonial-next",
+      prevEl: ".testimonial-prev",
+    },
+  });
   </script>
+
+
+
+
 @endsection

@@ -379,9 +379,7 @@
          </div>
         </section>
      <!-- end of newsletter section -->
-          
-   
-  
+      
   <div class="lightBox-container">
       <div class="lightBox-gallery">
       @if($room)
@@ -393,6 +391,21 @@
         @endif
       </div>
   </div>
+
+  @if(Session::has('customerlogin'))
+<form style="margin-bot:300px" method="post" onsubmit="myFunction(event)" action="{{route('saveTestimonial')}}">
+		@csrf
+		<table class="table table-bordered">
+			<tr>
+				<th>Testimonial<span class="text-danger">*</span></th>
+				<td><textarea name="testi_content" class="form-control" rows="8"></textarea></td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="submit" class="btn btn-primary" /></td>
+			</tr>
+		</table>
+	</form>
+  @endif
 
     <!--This id will be use at the main js-->
     <div id="travel"></div>
@@ -425,38 +438,6 @@ var roomSwiper = new Swiper(".room-container", {
     navigation: {
       nextEl: ".room-next",
       prevEl: ".room-previous",
-    },
-  });
-
-
-/*=============== SWIPER TESTIMONIAL ===============*/
-var swiper = new Swiper(".slide-content", {
-    slidesPerView: 3,
-    spaceBetween: 25,
-    loop: true,
-    centerSlide: 'true',
-    fade: 'true',
-    grabCursor: 'true',
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-      dynamicBullets: true,
-    },
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-
-    breakpoints:{
-        0: {
-            slidesPerView: 1,
-        },
-        520: {
-            slidesPerView: 2,
-        },
-        950: {
-            slidesPerView: 3,
-        },
     },
   });
   </script>

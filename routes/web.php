@@ -104,7 +104,7 @@ Route::get('booking/fail',[BookingController::class,'booking_payment_fail']);
 //Frontend View Room
 Route::get('/viewRoom/{slug}/{id}',[HomeController::class, 'roomDetail'])->name('RoomDetail');
 //Frontend Save Testimonials
-Route::post('/viewRoom/save-testimonial',[HomeController::class, 'save_testimonial'])->name('saveTestimonial');
+Route::post('/home/save-testimonial',[HomeController::class, 'save_testimonial'])->name('saveTestimonial');
 //Frontend Show Testimonials Status
 Route::get('/testimonial/success',[HomeController::class, 'show_testimonial_status'])->name('testimonialSuccess');
 //Frontend Download PDF Invoice
