@@ -53,17 +53,6 @@
                 <th>Bio</th>
                 <td><textarea class="form-control" name="bio"></textarea></td>
             </tr>
-            <tr>
-                <th>Salary Type</th>
-                <td>
-                    <input type="radio" name="salary_type" value="daily"> Daily
-                    <input type="radio" name="salary_type" value="monthly"> Monthly
-                </td>
-            </tr>
-            <tr>
-                <th>Salary Amount</th>
-                <td><input name="salary_amt" class="form-control" type="number" /></td>
-            </tr>
         
             <tr>
                 <td colspan="2">

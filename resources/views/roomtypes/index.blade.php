@@ -22,9 +22,6 @@
                     <tr>
                         <th>#</th>
                         <th>Type</th>
-                        <th>Price</th>
-                        <th>Detail</th>
-                        <th>Gallery Image</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -32,9 +29,6 @@
                     <tr>
                         <th>#</th>
                         <th>Type</th>
-                        <th>Price</th>
-                        <th>Detail</th>
-                        <th>Gallery Image</th>
                         <th>Action</th>
                     </tr>
                 </tfoot>
@@ -44,11 +38,7 @@
                     <tr>
                         <td>{{$d->id}}</td> <!--The id match from the database column-->
                         <td>{{$d->type}}</td> <!--The "type" match from the database column-->
-                        <td>{{$d->price}}</td>
-                        <td class="detail-column"> <p>{{$d->detail}}</p></td>
-                        <td>{{count($d->roomtypeimgs)}}</td> <!--The "roomtypeimgs is the function from model(roomtype)"-->
                         <td>
-                            <a href="{{url('admin/roomtype/'.$d->id)}}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>
                             <a href="{{url('admin/roomtype/'.$d->id).'/edit'}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
                             <a onclick="return confirm('Do you sure want to delete this data?')" href="{{url('admin/roomtype/'.$d->id).'/delete'}}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
                         </td>

@@ -2,8 +2,8 @@
 @section('content')
 
  <!-- Begin Page Content -->
+ 
  <div class="container-fluid">
-
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
@@ -24,6 +24,31 @@
                 <td>{{$data->title}}</td>
             </tr>
             <tr>
+                <th>Description</th>
+                <td>{{$data->description}}</td>
+            </tr>
+            <tr>
+                <th>Bed</th>
+                <td>{{$data->bed}}</td>
+            </tr>
+            <tr>
+                <th>Bedroom</th>
+                <td>{{$data->bedroom}}</td>
+            </tr>
+            <tr>
+                <th>Amenities</th>
+                <td class="amenities" style="width:600px">
+                    @php
+                        $amenities = json_decode($data->amenities)
+                    @endphp
+                    @foreach($amenities as $a)
+                    <ul style="display:inline-block">
+                        <li>{{$a}}</li>
+                    </ul>        
+                    @endforeach
+                </td>
+            </tr>
+            <tr>
                 <th>Price</th>
                 <td>{{$data->price}}</td>
             </tr>
@@ -34,7 +59,7 @@
                         <tr>
                             @foreach($data->roomimgs as $img)
                             <td class="imgcol{{$img->id}}">
-                                <img width="150" height="150" src="{{asset('storage/room/'.$img->img_src)}}" />
+                                <img width="150" height="100" src="{{asset('storage/room/'.$img->img_src)}}" />
                             </td>
                             @endforeach
                         </tr>

@@ -101,6 +101,8 @@
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3983.7750964258053!2d101.71270561422716!3d3.153916897703508!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc37d3a880566d%3A0x777619bf0fbbc576!2sTraders%20Hotel%20Kuala%20Lumpur!5e0!3m2!1sen!2smy!4v1659511115903!5m2!1sen!2smy" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 </div>
 
+
+<script src="/js/scrollreveal.min.js"></script>
 <script>
 //------------ Contact Page - send message -------------//
 const contactForm = document.querySelector(".contactForm"),
@@ -133,6 +135,22 @@ contactForm.onsubmit = (e)=>{
   let contactFormData = new FormData(contactForm);
   xhr.send(contactFormData);
 }
+
+
+ //--------------- SCROLL REVEAL ANIMATION ----------------*/
+ const sr = ScrollReveal({
+      origin: 'top',
+      distance: '100px',
+      duration: 1500,
+      delay: 200,
+      easing: 'ease-out',
+      reset: true
+    })
+    
+    sr.reveal('.contact-bg-content, .contact-items',{delay: 300})
+    sr.reveal('.contact-form-container',{delay: 400, origin: 'left'})
+
+    sr.reveal('.map',{delay: 800, interval: 100})
 </script>
 
 @endsection

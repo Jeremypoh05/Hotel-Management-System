@@ -170,20 +170,6 @@
                 </div>
             </li>
 
-                <!-- Service -->
-                <li class="nav-item">
-                <a class="nav-link @if(!request()->is('admin/service*')) collapsed @endif" href="#" data-toggle="collapse" data-target="#service"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-hands-helping"></i>
-                    <span>Service</span>
-                </a>
-                <div id="service" class="collapse @if(request()->is('admin/service*')) show @endif" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{url('admin/service/create')}}">Add New</a>
-                        <a class="collapse-item" href="{{url('admin/service')}}">View All</a>
-                    </div>
-                </div>
-            </li>
 
             <li class="nav-item">
                 <a class="nav-link" href="{{url('admin/testimonials')}}">

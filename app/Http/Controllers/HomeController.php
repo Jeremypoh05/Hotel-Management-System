@@ -7,7 +7,6 @@ use Session;
 use App\Models\Room;
 use App\Models\RoomImage;
 use App\Models\Gallery;
-use App\Models\Service;
 use App\Models\Booking;
 use App\Models\Testimonial;
 use DB;
@@ -30,9 +29,8 @@ class HomeController extends Controller
         $testimonials=Testimonial::all();
 
         $room=Room::all();
-        $services=Service::all();
         $booking=Booking::all();
-        return view('home',['room'=>$room,'booking'=>$booking,'testimonials'=>$testimonials,'services'=>$services]);
+        return view('home',['room'=>$room,'booking'=>$booking,'testimonials'=>$testimonials]);
        // return view('home')->with('gallery',$gallery);
     }
 
@@ -44,19 +42,27 @@ class HomeController extends Controller
       // Save Testimonial
       function save_testimonial(Request $request){
         
+        $request->validate([
+            'testi_content'=>'required',
+        ]);
+
         $customerId=session('data')[0]->id;
         $data=new Testimonial;
         $data->customer_id=$customerId;
         $data->testi_content=$request->testi_content;
         $data->save();
 
-        Session::flash('success',"Testimonial added successfully!");
-        return redirect()->route('testimonialSuccess');
+        return redirect()->route('testimonialSuccess')->with('success','Testimonial added successfully!');
     }
 
      // Show Testimonial Status
      function show_testimonial_status(){
         return view('testimonialSuccess');
+    }
+
+    public function roomPage(){
+        $room=Room::orderBy('id')->paginate(5);
+        return view('frontendRoomPage',['room'=>$room]);
     }
 
     public function contactPage()

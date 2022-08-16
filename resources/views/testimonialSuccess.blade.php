@@ -14,7 +14,7 @@
   <script>
     Swal.fire({
         title: 'Success!',
-        text: 'Your testimonial will be checked by the admin.',
+        text: 'Your testimonial will be checked by the admin and it will be post to the about page.',
         icon: 'success',
         confirmButtonText:'<i class="fa fa-thumbs-up"></i> Great! Go back to Home Page',
         confirmButtonAriaLabel: 'Thumbs up, great!',
@@ -27,7 +27,6 @@
   </script>
   @endif
 
-  <h1>so</h1>
 
 </body>
 </html>

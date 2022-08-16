@@ -52,8 +52,7 @@ class StaffDepartmentController extends Controller
      */
     public function show($id)
     {
-        $data=Department::find($id);
-        return view('department.show',['data'=>$data]);
+       
     }
 
     /**

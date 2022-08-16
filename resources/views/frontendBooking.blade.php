@@ -1,6 +1,7 @@
 @extends('frontendlayout')
 @section('title','Booking')
 @section('content')
+<script src="/js/custom/main.js" defer></script>
 
 <section class="landing-page-bg">
     <div class="content flex-center">
@@ -175,6 +176,7 @@
                 </div>
             </section>
                
+<script src="/js/scrollreveal.min.js"></script>
 <!--Jquery CDN-->
 <script src="/vendor/jquery/jquery.min.js"></script>
 <script type="text/javascript">
@@ -230,7 +232,6 @@
 
     });
 
-
   /*=============== QUESTIONS ACCORDION ===============*/
   const accordionItems = document.querySelectorAll('.questions__item')
 
@@ -260,5 +261,17 @@ const toggleItem = (item) =>{
     }
 }
 
-    </script> 
+    //--------------- SCROLL REVEAL ANIMATION ----------------*/
+    const sr = ScrollReveal({
+      origin: 'top',
+      distance: '100px',
+      duration: 1500,
+      delay: 200,
+      easing: 'ease-out',
+      reset: true
+    })
+    sr.reveal('.content, .heading',{delay: 200})
+    sr.reveal('.booking-container', {delay: 200, origin: 'left'})
+    sr.reveal('.questions__item',{interval: 100})
+</script> 
 @endsection('content')

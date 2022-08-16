@@ -31,19 +31,6 @@
                 <td><input name="type" type="text" class="form-control" /></td>
             </tr>
             <tr>
-                <th>Price</th>
-                <td><input name="price" type="number" class="form-control" /></td>
-            </tr>
-            <tr>
-            <tr>
-                <th>Detail</th>
-                <td><textarea name="detail" class="form-control"></textarea></td>
-            </tr>
-            <tr>
-                <th>Gallery</th>
-                <td><input type="file" multiple name="imgs[]"  /></td>
-            </tr>
-            <tr>
                 <td colspan="2">
                 <input type="submit" class="btn btn-primary" />
                 </td> 

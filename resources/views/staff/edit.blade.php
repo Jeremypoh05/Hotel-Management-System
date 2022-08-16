@@ -48,17 +48,6 @@
                                             <td><textarea class="form-control" name="bio">{{$data->bio}}</textarea></td>
                                         </tr>
                                         <tr>
-                                            <th>Salary Type</th>
-                                            <td>
-                                                <input @if($data->salary_type=='daily') checked @endif type="radio" name="salary_type" value="daily"> Daily
-                                                <input @if($data->salary_type=='monthly') checked @endif type="radio" name="salary_type" value="monthly"> Monthly
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>Salary Amount</th>
-                                            <td><input value="{{$data->salary_amt}}" name="salary_amt" class="form-control" type="number" /></td>
-                                        </tr>
-                                        <tr>
                                             <td colspan="2">
                                                 <input type="submit" class="btn btn-primary" />
                                             </td> 

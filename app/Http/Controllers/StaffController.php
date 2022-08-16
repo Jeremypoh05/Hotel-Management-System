@@ -57,8 +57,6 @@ class StaffController extends Controller
         $data->department_id=$request->department_id;
         $data->photo=$reImage;
         $data->bio=$request->bio;
-        $data->salary_type=$request->salary_type;
-        $data->salary_amt=$request->salary_amt;
         $data->save();
 
         return redirect('admin/staff/create')->with('success','Data has been added.');
@@ -117,8 +115,6 @@ class StaffController extends Controller
         $data->department_id=$request->department_id;
         $data->photo=$reImage;
         $data->bio=$request->bio;
-        $data->salary_type=$request->salary_type;
-        $data->salary_amt=$request->salary_amt;
         $data->save();
 
         return redirect('admin/staff/'.$id.'/edit')->with('success','Data has been updated.');
@@ -135,34 +131,4 @@ class StaffController extends Controller
        Staff::where('id',$id)->delete();
        return redirect('admin/staff')->with('success','Data has been deleted.');
     }
-
-    // Show Payments of a specific staff
-    function all_payments(Request $request,$staff_id){
-        $data=StaffPayment::where('staff_id',$staff_id)->get(); //parse the database table column staff_id to the $staff_id
-        $staff=Staff::find($staff_id);
-        return view('staffpayment.index',['staff_id'=>$staff_id,'data'=>$data,'staff'=>$staff]);
-    }
-
-    // Add Payment
-    function add_payment($staff_id){
-        return view('staffpayment.create',['staff_id'=>$staff_id]); //parse this staff_id to the from action at folder staffpayment-create.blade
-    }
-
-    function save_payment(Request $request,$staff_id){
-
-        $data=new StaffPayment;
-        $data->staff_id=$staff_id;
-        $data->amount=$request->amount;
-        $data->payment_date=$request->amount_date;
-        $data->save();
-
-        return redirect('admin/staff/payment/'.$staff_id.'/add')->with('success','Data has been added.');
-    }
-
-    public function delete_payment($id,$staff_id)
-    {
-       StaffPayment::where('id',$id)->delete();
-       return redirect('admin/staff/payments/'.$staff_id)->with('success','Data has been deleted.');
-    }
-
 }

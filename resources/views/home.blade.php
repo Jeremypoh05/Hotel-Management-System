@@ -65,7 +65,7 @@
               <h1>About<span> Us</span></h1>
               <p>Traders Hotel Kuala Lumpur by Shangri-La is located in the heart of Kuala Lumpur City Centre (KLCC) 
                 and offers the panoramic view of the Petronas Twin Towers, KLCC Park and the city's skyline.</p>
-              <a href="#" class="btn">Read More</a>
+              <a href="{{route('aboutPage')}}" class="btn">Read More</a>
             </div>
           </div>
         </div>
@@ -114,16 +114,20 @@
                   @endforeach
                   <div class="popular-room-data">
                     <div class="popular-room-data-price">
-                       <h3 class="popular-room-title">
-                       {{$r->roomtype->type}}<span>-<span>{{$r->title}}
-                       </h3>
-                       <h2 class="popular-room-price">
-                          <span>RM&nbsp;</span> {{$r->price}}
-                       </h2>
+                      <div class="popular-room-type-price">
+                        <h4 class="popular-room-type">{{$r->roomtype->type}}</h4>
+                         <h2 class="popular-room-price">
+                            <span>RM&nbsp;</span> {{$r->price}}
+                         </h2>
+                      </div>
+                       <span class="popular-room-title"><span>{{$r->title}}
+                       <div class="home-rooms-info-icon">
+                           <i class="fa-solid fa-bed"></i>{{$r->bed}} / 
+                           <i class="fa-solid fa-house-chimney"></i>{{$r->bedroom}} bedroom
+                         </div>
                     </div>
                        <p class="pouplar-room-description">
-                       The Malaysian Suite features a luxurious living room, a formal dining space, a separate work
-                        area and a breath-taking panoramic view of the city. The furnishings and artwork have been
+                          {{$r->description}}
                        </p>
                        <div class="popular-room-readMore">
                           <a href="{{url('viewRoom/'.Str::slug($r->title).'/'.$r->id)}}">Read More</a>
@@ -380,41 +384,36 @@
         </section>
      <!-- end of newsletter section -->
       
-  <div class="lightBox-container">
-      <div class="lightBox-gallery">
-      @if($room)
-      @foreach($room as $r)   
-          <h1>Price: {{$r->price}}</h1>
-          <a href="{{url('viewRoom/'.Str::slug($r->title).'/'.$r->id)}}">Read More
-        </a>   
-        @endforeach
-        @endif
-      </div>
-  </div>
-
   @if(Session::has('customerlogin'))
+<section class="section testimonial-form ">
+  <div class="heading flex-center">
+    <h1>Testimonials</h1>
+    <h2>Leave Your Comments</h2>
+  </div>
 <form style="margin-bot:300px" method="post" onsubmit="myFunction(event)" action="{{route('saveTestimonial')}}">
 		@csrf
-		<table class="table table-bordered">
-			<tr>
-				<th>Testimonial<span class="text-danger">*</span></th>
-				<td><textarea name="testi_content" class="form-control" rows="8"></textarea></td>
-			</tr>
-			<tr>
-				<td colspan="2"><input type="submit" class="btn btn-primary" /></td>
-			</tr>
-		</table>
-	</form>
-  @endif
+				<textarea id="testi_form" name="testi_content" onkeyup="charCount()"maxlength="300" placeholder="Give me your thought... "></textarea>
+				<div class="testi-submit-count">
+            <input type="submit" value="SUBMIT"class="btn btn-testi-form">
+            @if($errors->any())
+              @foreach($errors->all() as $error)
+              <p style="color:red">{{$error}}</p>
+            @endforeach
+          @endif
 
-    <!--This id will be use at the main js-->
-    <div id="travel"></div>
+          @if(Session::has('success'))
+            <p style="color:blue">{{session('success')}}</p>
+          @endif
+
+          <span class="testi-count" id="testi-count">0/300 (Max Character 300)</span>
+        </div>
+</section>
+@endif
 
 <!--React Gallery Slider-->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.1/umd/react.production.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.1/umd/react-dom.production.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/classnames/2.2.6/index.min.js"></script>
-
 
 <!--Swiper JS library-->
 <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
@@ -440,5 +439,6 @@ var roomSwiper = new Swiper(".room-container", {
       prevEl: ".room-previous",
     },
   });
+
   </script>
 @endsection('content')

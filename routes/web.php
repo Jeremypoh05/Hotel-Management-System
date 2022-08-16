@@ -23,7 +23,6 @@ use App\Http\Controllers\HomeController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/home', [HomeController::class,'homepage'])->name('home');
 
 //Admin Login
 Route::get('admin/login',[AdminController::class,'login']);
@@ -79,15 +78,13 @@ Route::get('admin/booking/{id}/delete',[BookingController::class,'destroy']);
 Route::get('admin/booking/available-rooms/{checkin_date}',[BookingController::class,'available_rooms']);
 Route::resource('admin/booking',BookingController::class);
 
-//Service
-Route::get('admin/service/{id}/delete',[ServiceController::class,'destroy']);
-Route::resource('admin/service',ServiceController::class);
-
 //Testimonial
 Route::get('admin/testimonial/{id}/delete',[AdminController::class,'destroy_testimonial']);
 Route::get('admin/testimonials',[AdminController::class,'testimonials']);
 
 //-------------------------------- Frontend Login ------------------------------------
+//HomePage
+Route::get('/home', [HomeController::class,'homepage'])->name('home');
 //Frontend Login
 Route::get('customer/login',[CustomerController::class,'login']);
 Route::post('customer/login',[CustomerController::class,'customer_login']);
@@ -101,6 +98,8 @@ Route::get('booking',[BookingController::class,'frontend_booking']);
 Route::get('booking/success',[BookingController::class,'booking_payment_success']);
 //Frontend Fail Booking Page 
 Route::get('booking/fail',[BookingController::class,'booking_payment_fail']);
+//Frontend View All Room
+Route::get('/rooms',[HomeController::class,'roomPage'])->name('roomPage');
 //Frontend View Room
 Route::get('/viewRoom/{slug}/{id}',[HomeController::class, 'roomDetail'])->name('RoomDetail');
 //Frontend Save Testimonials

@@ -25,32 +25,6 @@
                 <th>Type</th>
                 <td><input value="{{$data->type}}" name="type" type="text" class="form-control" /></td>
             </tr>
-            <tr>
-                <th>Price</th>
-                <td><input value="{{$data->price}}" name="price" type="number" class="form-control" /></td>
-            </tr>
-            <tr>
-                <th>Detail</th>
-                <td><textarea name="detail" class="form-control">{{$data->detail}}</textarea></td>
-            </tr>
-            <tr>
-                <th>Gallery Images</th>
-                <td>
-                    <table class="table table-bordered mt-3">
-                        <tr>
-                            <input type="file" multiple name="imgs[]" /> 
-                            @foreach($data->roomtypeimgs as $img)<!--The roomimgs is the function from the model(room) which shows their relationship-->
-                            <td class="imgcol{{$img->id}}">
-                                <img width="150" height="150" src="{{asset('storage/roomtype/'.$img->img_src)}}" />
-                                <p class="mt-2">
-                                    <button type="button" onclick="return confirm('Are you sure you want to delete this image??')" class="btn btn-danger btn-sm delete-image" data-image-id="{{$img->id}}"><i class="fa fa-trash"></i></button>
-                                </p>
-                            </td>
-                            @endforeach
-                        </tr>
-                    </table>
-                </td>
-            <tr>
                 <td colspan="2">
                 <input type="submit" class="btn btn-primary" />
                 </td> 
@@ -62,28 +36,5 @@
 
 </div>
 <!-- /.container-fluid -->
-@section('scripts')
-<script type="text/javascript">
-    $(document).ready(function(){
-        $(".delete-image").on('click',function(){
-            var _img_id=$(this).attr('data-image-id');
-            var _vm=$(this);
-            $.ajax({
-                url:"{{url('admin/roomtypeimage/delete')}}/"+_img_id,
-                dataType:'json',
-                beforeSend:function(){
-                    _vm.addClass('disabled');
-                },
-                success:function(res){
-                    if(res.bool==true){
-                        $(".imgcol"+_img_id).remove();
-                    }
-                    _vm.removeClass('disabled');
-                }
-            });
-        });
-    });
-</script>
-@endsection
 
 @endsection

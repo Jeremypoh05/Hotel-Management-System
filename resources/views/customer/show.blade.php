@@ -20,10 +20,6 @@
                 <td>{{$data->full_name}}</td>
              </tr>
              <tr>
-                <th>Photo</th>
-                 <td><img width="100" src=" {{ asset('images/') }}/{{$data->photo}}" /></td>
-             </tr>
-             <tr>
                 <th>Email</th>
                 <td>{{$data->email}}</td>
             </tr>

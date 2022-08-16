@@ -41,13 +41,6 @@
                 <td><input value="{{$data->mobile}}" name="mobile" type="text" class="form-control" /></td>
             </tr>
             <tr>
-                <th>Photo.</th>
-                <td><input name="photo" type="file"/>
-                <input type="hidden" name="prev_photo" value="{{$data->photo}}" />
-                <img width="100" src=" {{ asset('images/') }}/{{$data->photo}}" />
-                </td>
-            </tr>
-            <tr>
                 <th>Address</th>
                 <td><textarea name="address" class="form-control">{{$data->address}}</textarea></td>
             </tr>

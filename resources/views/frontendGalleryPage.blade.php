@@ -80,6 +80,7 @@
 <div class="section lightBox-container">
 
 
+<script src="/js/scrollreveal.min.js"></script>
 <script>
     $('.owl-carousel').owlCarousel({
       loop: true,
@@ -103,5 +104,20 @@
         }
       }
     })
+
+    //--------------- SCROLL REVEAL ANIMATION ----------------*/
+    const sr = ScrollReveal({
+      origin: 'top',
+      distance: '100px',
+      duration: 1500,
+      delay: 200,
+      easing: 'ease-out',
+      reset: true
+    })
+    
+    sr.reveal('.gallery-bg-content',{delay: 100})
+    sr.reveal('.carousel-item',{delay: 200, origin: 'left'})
+    sr.reveal('.gallery-img-wrapper',{delay: 800, interval: 100})
+
   </script>
 @endsection('content')

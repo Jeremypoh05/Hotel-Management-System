@@ -46,19 +46,6 @@ class CustomerController extends Controller
             'address'=>'required',
         ]);
 
-        $input = $request->all();
-        if($request->hasFile('photo')){
-            $image=$request->file('photo');
-            $extension = $image->getClientOriginalExtension();
-            $reImage = $image->getClientOriginalName();
-            $dest=public_path('/images');
-            $image->move($dest,$reImage);
-            
-            $input['photo'] = $reImage;
-        }else{
-            $reImage='na';
-        }
-
         //$imgPath=$request->file('photo')->store('public/imgs');
 
         $data=new Customer;
@@ -67,7 +54,6 @@ class CustomerController extends Controller
         $data->password=sha1($request->password);//sha1 or md5 encrypt method (default php function)
         $data->mobile=$request->mobile;
         $data->address=$request->address;
-        $data->photo=$reImage;
         $data->save();
 
         $ref=$request->ref; //ref is the input type hidden name from the register.blade.php
@@ -117,26 +103,12 @@ class CustomerController extends Controller
             'mobile'=>'required',
         ]);
 
-        $input = $request->all();
-        if($request->hasFile('photo')){
-            $image=$request->file('photo');
-            $extension = $image->getClientOriginalExtension();
-            $reImage = $image->getClientOriginalName();
-            $dest=public_path('/images');
-            $image->move($dest,$reImage);
-
-            $input['photo'] = $reImage;
-        }else{
-            $reImage='na';
-        }
-
         $data=Customer::find($id);
         $data->full_name=$request->full_name;
         $data->email=$request->email;
         $data->password=sha1($request->password);//sha1 or md5 encrypt method (default php function)
         $data->mobile=$request->mobile;
         $data->address=$request->address;
-        $data->photo=$reImage;
         $data->save();
       
         return redirect('admin/customer/'.$id.'/edit')->with('success','Data has been updated.');

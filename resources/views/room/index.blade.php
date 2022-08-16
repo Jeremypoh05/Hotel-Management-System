@@ -4,7 +4,6 @@
  <!-- Begin Page Content -->
  <div class="container-fluid">
 
-
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
@@ -24,6 +23,7 @@
                         <th>Room Type</th>
                         <th>Name</th>
                         <th>Price</th>
+                        <th>Room Images</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -33,6 +33,7 @@
                         <th>Room Type</th>
                         <th>Name</th>
                         <th>Price</th>
+                        <th>Room Images</th>
                         <th>Action</th>
                     </tr>
                 </tfoot>
@@ -44,12 +45,13 @@
                         <td>{{$d->roomtype->type}} <!--the "roomtype" is the function from the model -room which shows the relationship between room and roomtype(Room belongs to RoomType)-->
                         <td>{{$d->title}}</td> <!--The title match from the database column-->
                         <th>{{$d->price}}</th>
+                        <td>{{count($d->roomimgs)}}</td> <!--The "roomimgs is the function from model(room)"-->
                         <td>
-                            <a href="{{url('admin/rooms/'.$d->id)}}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>
+                            <a href="/admin/rooms/{{ $d->id }}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>
                             <a href="{{url('admin/rooms/'.$d->id).'/edit'}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
                             <a onclick="return confirm('Do you sure want to delete this data?')" href="{{url('admin/rooms/'.$d->id).'/delete'}}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
                         </td>
-                    </tr>
+                    </tr>   
                     @endforeach
                 @endif
                 </tbody>

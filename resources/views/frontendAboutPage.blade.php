@@ -85,6 +85,7 @@
     </div>
     </section>
 
+  <script src="/js/scrollreveal.min.js"></script>
   <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>  
   <script>
   var testimonialSwiper = new Swiper(".testimonial-container", {
@@ -101,6 +102,22 @@
       prevEl: ".testimonial-prev",
     },
   });
+
+     //--------------- SCROLL REVEAL ANIMATION ----------------*/
+     const sr = ScrollReveal({
+      origin: 'top',
+      distance: '100px',
+      duration: 1500,
+      delay: 200,
+      easing: 'ease-out',
+      reset: true
+    })
+    
+    sr.reveal('.about-bg-content, .heading',{delay: 100})
+    sr.reveal('.about-page-left',{delay: 400, origin: 'left'})
+    sr.reveal('.about-page-right',{delay: 400, origin: 'right'})
+
+    sr.reveal('.mission-vision-container',{delay: 800, interval: 100})
   </script>
 
 

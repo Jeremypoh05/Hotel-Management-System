@@ -24,6 +24,7 @@
                         <th>Full Name</th>
                         <th>Photo</th>
                         <th>Department</th>
+                        <th>bio</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -36,10 +37,9 @@
                         <td>{{$d->full_name}}</td>
                         <td><img width="150" height="150" src="{{asset('storage/staff/'.$d->photo)}}"></td>
                         <td>{{$d->department->title}}</td> <!--the "department" is the function from the model -staff which shows the relationship between staff and department-->
+                        <td>{{$d->bio}}</td>
                         <td>
-                            <a href="{{url('admin/staff/'.$d->id)}}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>
                             <a href="{{url('admin/staff/'.$d->id).'/edit'}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
-                            <a href="{{url('admin/staff/payments/'.$d->id)}}" class="btn btn-dark btn-sm"><i class="fa fa-credit-card"></i></a>
                             <a onclick="return confirm('Do you sure want to delete this data?')" href="{{url('admin/staff/'.$d->id).'/delete'}}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
                         </td>
                     </tr>

@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\RoomTypes;
-use App\Models\RoomTypeImage;
-use Illuminate\Support\Facades\Storage;
 
 class RoomTypeController extends Controller
 {
@@ -40,33 +38,11 @@ class RoomTypeController extends Controller
     {
         $request->validate([
             'type'=>'required',
-            'price'=>'required',
-            'detail'=>'required',
         ]);
 
         $data=new RoomTypes;
         $data->type=$request->type; //this "type" must match with the create.blade.php type name
-        $data->price=$request->price;
-        $data->detail=$request->detail;
         $data->save();
-
-        $input = $request->all();
-        if($request->hasFile('imgs')){
-            foreach($request->file('imgs') as $img){
-                $extension = $img->getClientOriginalExtension();
-                $reImage = $img->getClientOriginalName();
-                $dest=public_path('storage/roomtype');
-                $img->move($dest,$reImage);
-
-                $input['imgs'] = $reImage;
-
-                $imgData=new RoomTypeImage;
-                $imgData->room_type_id=$data->id;
-                $imgData->img_src=$reImage;
-                $imgData->img_alt=$request->type;
-                $imgData->save();
-            }
-        }
        
         return redirect('admin/roomtype/create')->with('success','Data has been added.');
     }
@@ -79,8 +55,7 @@ class RoomTypeController extends Controller
      */
     public function show($id)
     {
-        $data=RoomTypes::find($id);
-        return view('roomtypes.show',['data'=>$data]);
+      
     }
 
     /**
@@ -106,27 +81,8 @@ class RoomTypeController extends Controller
     {
         $data= RoomTypes::find($id);
         $data->type=$request->type; 
-        $data->price=$request->price;
-        $data->detail=$request->detail;
         $data->save();
 
-          if($request->hasFile('imgs')){
-            foreach($request->file('imgs') as $img){
-                $extension = $img->getClientOriginalExtension();
-                $reImage = $img->getClientOriginalName();
-                $dest=public_path('storage/roomtype');
-                $img->move($dest,$reImage);
-
-                $input['imgs'] = $reImage;
-
-                $imgData=new RoomTypeImage;
-                $imgData->room_type_id=$data->id;
-                $imgData->img_src=$reImage;
-                $imgData->img_alt=$request->type;
-                $imgData->save();
-            }
-        }
-      
         return redirect('admin/roomtype/'.$id.'/edit')->with('success','Data has been updated.');
     }
 
@@ -140,14 +96,5 @@ class RoomTypeController extends Controller
     {
         RoomTypes::where('id',$id)->delete();
         return redirect('admin/roomtype')->with('success','Data has been deleted.');
-    }
-
-    public function destroy_image($img_id)
-    {
-        $data=RoomTypeImage::where('id',$img_id)->first();
-        Storage::delete($data->img_src);
-
-        RoomTypeImage::where('id',$img_id)->delete();
-        return response()->json(['bool'=>true]);
     }
 }

@@ -43,10 +43,6 @@
                 <td><input name="mobile" type="text" class="form-control" /></td>
             </tr>
             <tr>
-                <th>Photo.</th>
-                <td><input name="photo" type="file"/></td>
-            </tr>
-            <tr>
                 <th>Address</th>
                 <td><textarea name="address" class="form-control"></textarea></td>
             </tr>

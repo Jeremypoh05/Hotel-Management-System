@@ -1,9 +1,19 @@
 @extends('layout')
 @section('content')
 
+
+<style>
+    .amenities{
+      display:grid;
+      /*grid-template-columns: repeat(auto-fill,minmax(150px,1fr));*/ 
+      grid-template-columns: repeat(4,minmax(150px,1fr));
+      align-items:center;
+      font-size:14px;
+    }
+</style>
+
  <!-- Begin Page Content -->
  <div class="container-fluid">
-
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
@@ -14,9 +24,11 @@
     </div>
     <div class="card-body">
     @if($errors->any())
-        @foreach($errors->all() as $error)
-          <p class="text-danger">{{$error}}</p>
-        @endforeach
+        <ul>
+          @foreach($errors->all() as $error)
+            <li class="text-danger">{{$error}}</li>
+          @endforeach
+        </ul>
     @endif
     
         @if(Session::has('success'))
@@ -43,6 +55,31 @@
             <tr>
                 <th>Title</th>
                 <td><input name="title" type="text" class="form-control" /></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td><textarea name="description" class="form-control"></textarea></td>
+            </tr>
+            <tr>
+                <th>Bed</th>
+                <td><input name="bed" type="text" class="form-control" /></td>
+            </tr>
+            <tr>
+                <th>Bedrooms</th>
+                <td><input name="bedroom" type="number" class="form-control" /></td>
+            </tr>
+            <tr>
+                <th>Amenities</th>
+                   <td class="amenities">
+                       <input type="checkbox" name="amenities[]" value="AirConditioning">Air conditioning
+                       <input type="checkbox" name="amenities[]" value="WardrobeCloset">Wardrobe or closet
+                       <input type="checkbox" name="amenities[]" value="Minibar">Minibar
+                       <input type="checkbox" name="amenities[]" value="Balcony">Balcony
+                       <input type="checkbox" name="amenities[]" value="HairDryer">Hair Dryer
+                       <input type="checkbox" name="amenities[]" value="Sofa">Sofa
+                       <input type="checkbox" name="amenities[]" value="ClothesRack">Clothes rack
+                       <input type="checkbox" name="amenities[]" value="Desk">Desk
+                    </td>
             </tr>
             <tr>
                 <th>Price</th>
