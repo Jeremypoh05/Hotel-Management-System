@@ -2,6 +2,9 @@
 @section('title','Traders')
 @section('content')
 
+<script src="/js/custom/main.js"></script>
+
+
 <!---------------- About Section ---------------->
 <section class="about-page-bg">
     <div class="about-bg-content flex-center">
