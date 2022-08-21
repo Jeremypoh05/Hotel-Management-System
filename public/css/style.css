@@ -2050,6 +2050,7 @@ line-height: 35px;
 }
 
 .about-page-container{
+  overflow-x: hidden;
   max-width: 90%;
   margin: auto;
 } 

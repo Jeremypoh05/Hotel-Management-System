@@ -8,7 +8,7 @@
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Show Room Types
+        <h6 class="m-0 font-weight-bold text-primary">Show Customers
         <a href="{{url('admin/customer')}}" class="float-right btn btn-success btn-sm">View All</a>
         </h6>
     </div>
