@@ -2,9 +2,6 @@
 @section('title','Traders')
 @section('content')
 
-<script src="/js/custom/main.js"></script>
-
-
 <!---------------- About Section ---------------->
 <section class="about-page-bg">
     <div class="about-bg-content flex-center">
@@ -88,8 +85,10 @@
     </div>
     </section>
 
+
   <script src="/js/scrollreveal.min.js"></script>
   <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>  
+
   <script>
   var testimonialSwiper = new Swiper(".testimonial-container", {
     slidesPerView: 1,
