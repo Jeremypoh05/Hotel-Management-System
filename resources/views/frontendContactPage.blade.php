@@ -2,8 +2,6 @@
 @section('title','Traders')
 @section('content')
 
-<script src="/js/custom/main.js"></script>
-
 <!---------------- Contact Section ---------------->
 <section class="contact-page-bg">
     <div class="contact-bg-content flex-center">
