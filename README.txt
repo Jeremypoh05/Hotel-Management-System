@@ -1,6 +1,6 @@
 HOW TO RUN THE PROGRAM?
 
-1. Open terminal and type cd blogproject.
+1. Open terminal.
 2. Then, type cp .env.example .env in the terminal.
 3. Go to phpmyadmin, add a new database.
 4. After create the database , go to env file and change the DB_DATABASE name according    to the database that created just now.
