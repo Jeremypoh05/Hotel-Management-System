@@ -2,8 +2,6 @@
 @section('title','Traders')
 @section('content')
 
-<script src="/js/custom/main.js"></script>
-
 <section class="room-page-bg">
     <div class="room-bg-content flex-center">
       <h1>Rooms</h1>

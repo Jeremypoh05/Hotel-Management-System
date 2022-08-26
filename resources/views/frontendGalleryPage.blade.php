@@ -1,7 +1,6 @@
 @extends('frontendlayout')
 @section('title','Traders')
 @section('content') 
-<script src="/js/custom/main.js"></script>
 
 <!---------------- Gallery Section (Landing Page) ---------------->
 <section class="gallery-page-bg">

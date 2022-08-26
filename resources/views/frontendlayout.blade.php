@@ -86,12 +86,6 @@
            </div>
         </ul>
 
-        <div class="search">
-          <button class="btn place-items-center" id="search-icon">
-            <i class="ri-search-line"></i>
-          </button>  
-        </div>
-
         <div class="hamburger">
           <span class="bar"></span>
           <span class="bar"></span>
@@ -107,25 +101,6 @@
     </div>
   </header>
     
-      <!-- Search -->
-      <div class="search-form-container container" id="search-form-container">
-
-      <div class="form-container-inner">
-
-          <form action="" class="form">
-              <input class="form-input" type="text" placeholder="What are you looking for?">
-              <button class="btn form-btn" type="submit">
-                  <i class="ri-search-line"></i>
-              </button>
-          </form>
-          <span class="form-note">Or press ESC to close.</span>
-
-      </div>
-      <button class="btn form-close-btn place-items-center" id="form-close-btn">
-          <i class="ri-close-line"></i>
-      </button>
-      </div>
-</section>
     <!-- ------------x---------------  Header(Navigation) --------------------------x------------------- -->
       
    	<!--Content -->
@@ -196,7 +171,7 @@
    <a href="#" class="scrollup" id="scroll-up">
       <i class="fa-solid fa-angles-up"></i>
   </a>
-    
+
 <!--Swiper JS library-->
 <script src="/js/swiper-bundle.min.js"></script>
 

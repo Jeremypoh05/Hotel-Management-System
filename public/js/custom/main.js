@@ -30,25 +30,6 @@ function scrollUp(){
 }
 window.addEventListener('scroll', scrollUp)
 
-// Grab elements
-const selectElement = (selector) => {
-    const element = document.querySelector(selector);
-    if(element) return element;
-    throw new Error(`Something went wrong! Make sure that ${selector} exists/is typed correctly.`);  
-};
-
-const formOpenBtn = selectElement('#search-icon');
-const formCloseBtn = selectElement('#form-close-btn');
-const searchContainer = selectElement('#search-form-container');
-// Open/Close search form popup
-formOpenBtn.addEventListener('click', () => searchContainer.classList.add('activated'));
-formCloseBtn.addEventListener('click', () => searchContainer.classList.remove('activated'));
-// -- Close the search form popup on ESC keypress
-window.addEventListener('keyup', (event) => {
-    if(event.key === 'Escape') searchContainer.classList.remove('activated');
-});
-
-
 //Swiper slider for landing page
 var homeSwiper = new Swiper(".homepage-bg-slider-thumbs", {
     loop: true,

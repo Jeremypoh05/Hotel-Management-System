@@ -54,8 +54,8 @@
                             <p>Available Rooms:</p>
                             <select class="room-list" name="room_id"></select>
                         </div>
-                        
-                        <p class="show-room-price-amount">Total Price:&nbsp;<span class="show-room-price"></span></p> 
+                        <p onclick="calculateDays()">Diff</p>
+                        <p class="show-room-price-amount" id="output">Total Price:&nbsp;<span class="show-room-price"></span></p> 
                         @if(Session::has('data'))
                     	<input type="hidden" name="customer_id" value="{{session('data')[0]->id}}" />
                         @endif 
@@ -198,9 +198,16 @@
      tomorrow = yyyy + '-' + mm + '-' + tmrdd; 
      $('#checkout_date').attr('min',tomorrow);
 
-
+     
     //function of showing available rooms
     $(document).ready(function(){
+       
+        var d1=document.getElementById("checkin_date").value;
+        var d2=document.getElementById("checkout_date").value;
+        const dateOne = new Date(d1);
+        const dateTwo = new Date(d2);
+        const time = Math.abs(dateTwo - dateOne);
+        const days = Math.ceil(time / (1000 * 60 * 60 * 24));
         $(".checkin-date").on('blur',function(){
             var _checkindate=$(this).val();
             // Ajax
@@ -213,7 +220,7 @@
                 success:function(res){
                     var _html='';
                     $.each(res.data,function(index,row){
-                        _html+='<option data-price="'+row.room.price+'" value="'+row.room.id+'">'+row.roomtype.type+'-'+row.room.title+'</option>';
+                        _html+='<option data-price="'+row.room.price * days+'" value="'+row.room.id+'">'+row.roomtype.type+'-'+row.room.title+'</option>';
                     });
                     $(".room-list").html(_html);
 
@@ -229,8 +236,9 @@
             $(".room-price").val(_selectedPrice);
             $(".show-room-price").text(_selectedPrice);
         });
-
+       
     });
+
 
   /*=============== QUESTIONS ACCORDION ===============*/
   const accordionItems = document.querySelectorAll('.questions__item')
