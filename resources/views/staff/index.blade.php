@@ -35,9 +35,9 @@
                     <tr>
                         <td>{{$d->id}}</td> <!--The id match from the database column-->
                         <td>{{$d->full_name}}</td>
-                        <td><img width="150" height="150" src="{{asset('storage/staff/'.$d->photo)}}"></td>
+                        <td><img width="100" height="100" src="{{asset('storage/staff/'.$d->photo)}}"></td>
                         <td>{{$d->department->title}}</td> <!--the "department" is the function from the model -staff which shows the relationship between staff and department-->
-                        <td>{{$d->bio}}</td>
+                        <td style="max-width:200px">{{$d->bio}}</td>
                         <td>
                             <a href="{{url('admin/staff/'.$d->id).'/edit'}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
                             <a onclick="return confirm('Do you sure want to delete this data?')" href="{{url('admin/staff/'.$d->id).'/delete'}}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>

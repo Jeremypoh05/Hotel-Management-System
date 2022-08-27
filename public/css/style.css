@@ -652,7 +652,7 @@ font-size: var(--font-size-sm);
   }
 
   .heading{
-    margin-bottom: -50px;
+    margin-bottom: -20px;
   }
   .heading h1 {
     font-size: 100px;
@@ -3370,13 +3370,13 @@ ul.amenities-list li i{
    }
 
    .home-about .heading{
-    margin-bottom: -10px;
+    margin-bottom: 10px;
   }
 
   .heading h1 {
     font-size: 55px;
     position: absolute;
-    top: 32px;
+    top: 5px;
   }
    
   .heading h2 {
@@ -3682,9 +3682,9 @@ ul.amenities-list li i{
   }
 
   .heading h1 {
-    font-size: 48px;
+    font-size: 44px;
     position: absolute;
-    top: 32px;
+    top: 8px;
   }
    
   .heading h2 {

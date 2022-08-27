@@ -21,7 +21,7 @@
                                             <th>#</th>
                                             <th>Customer</th>
                                             <th style="max-width:50px">Room Type</th>
-                                            <th>Room Name</th>                                        
+                                            <th style="max-width:70px">Room Name</th>                                        
                                             <th style="max-width:70px">CheckIn Date</th>
                                             <th style="max-width:70px">CheckOut Date</th>
                                             <th>Price</th>

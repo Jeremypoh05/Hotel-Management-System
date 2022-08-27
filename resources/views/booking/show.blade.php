@@ -52,7 +52,7 @@
                 <td>{{$data->checkout_date}}</td>
             </tr>
             <tr>
-                <th>Total Aduilts</th>
+                <th>Total Adults</th>
                 <td>{{$data->total_adults}}</td>
             </tr>
             <tr>

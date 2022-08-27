@@ -30,6 +30,25 @@ function scrollUp(){
 }
 window.addEventListener('scroll', scrollUp)
 
+// Grab elements
+const selectElement = (selector) => {
+    const element = document.querySelector(selector);
+    if(element) return element;
+    throw new Error(`Something went wrong! Make sure that ${selector} exists/is typed correctly.`);  
+};
+
+const formOpenBtn = selectElement('#search-icon');
+const formCloseBtn = selectElement('#form-close-btn');
+const searchContainer = selectElement('#search-form-container');
+// Open/Close search form popup
+formOpenBtn.addEventListener('click', () => searchContainer.classList.add('activated'));
+formCloseBtn.addEventListener('click', () => searchContainer.classList.remove('activated'));
+// -- Close the search form popup on ESC keypress
+window.addEventListener('keyup', (event) => {
+    if(event.key === 'Escape') searchContainer.classList.remove('activated');
+});
+
+
 //Swiper slider for landing page
 var homeSwiper = new Swiper(".homepage-bg-slider-thumbs", {
     loop: true,
@@ -152,21 +171,6 @@ var mainRoom = new Swiper(".main-room-swiper", {
 
 
 
-//--------------- SCROLL REVEAL ANIMATION ----------------*/
-const sr = ScrollReveal({
-  origin: 'top',
-  distance: '60px',
-  duration: 1500,
-  delay: 200,
-  easing   : 'ease-in-out',
-})
-
-sr.reveal('.heading, .video-title, .video-description',{  delay: 200})
-sr.reveal('.left, .right, .video__content, .places',{origin: 'left', delay: 300})
-sr.reveal('.room-container', {scale: 0.7, duration: 1000, delay: 800} )
-sr.reveal('.wrapper, .footer', {delay: 800,  duration: 1000, origin: 'bottom'})
-
-
 const sr2 = ScrollReveal({
   origin: 'top',
   distance: '100px',
@@ -178,7 +182,3 @@ const sr2 = ScrollReveal({
 sr2.reveal('.content, .heading',{delay: 200})
 sr2.reveal('.booking-container', {delay: 200, origin: 'left'})
 sr2.reveal('.questions__item',{interval: 100})
-
-
-
-

@@ -417,6 +417,8 @@
 
 <!--Swiper JS library-->
 <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+<!--Scroll Reveal-->
+<script src="/js/scrollreveal.min.js"></script>
 <script>
 /*=============== SWIPER ROOM ===============*/
 var roomSwiper = new Swiper(".room-container", {
@@ -440,5 +442,19 @@ var roomSwiper = new Swiper(".room-container", {
     },
   });
 
+
+  //--------------- SCROLL REVEAL ANIMATION ----------------*/
+    const sr = ScrollReveal({
+     origin: 'top',
+     distance: '60px',
+     duration: 1500,
+     delay: 200,
+     easing   : 'ease-in-out',
+    })
+    
+    sr.reveal('.heading, .video-title, .video-description',{  delay: 200})
+    sr.reveal('.left, .right, .video__content, .places',{origin: 'left', delay: 300})
+    sr.reveal('.room-container', {scale: 0.7, duration: 1000, delay: 800} )
+    sr.reveal('.wrapper', {delay: 800,  duration: 1000, origin: 'bottom'})
   </script>
 @endsection('content')

@@ -54,7 +54,6 @@
                             <p>Available Rooms:</p>
                             <select class="room-list" name="room_id"></select>
                         </div>
-                        <p onclick="calculateDays()">Diff</p>
                         <p class="show-room-price-amount" id="output">Total Price:&nbsp;<span class="show-room-price"></span></p> 
                         @if(Session::has('data'))
                     	<input type="hidden" name="customer_id" value="{{session('data')[0]->id}}" />
@@ -220,7 +219,7 @@
                 success:function(res){
                     var _html='';
                     $.each(res.data,function(index,row){
-                        _html+='<option data-price="'+row.room.price * days+'" value="'+row.room.id+'">'+row.roomtype.type+'-'+row.room.title+'</option>';
+                        _html+='<option data-price="'+row.room.price+'" value="'+row.room.id+'">'+row.roomtype.type+'-'+row.room.title+'</option>';
                     });
                     $(".room-list").html(_html);
 
