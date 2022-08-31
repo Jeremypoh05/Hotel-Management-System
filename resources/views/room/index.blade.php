@@ -19,7 +19,6 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>#</th>
                         <th>Room Type</th>
                         <th>Name</th>
                         <th>Price</th>
@@ -29,7 +28,6 @@
                 </thead>
                 <tfoot> 
                     <tr>
-                        <th>#</th>
                         <th>Room Type</th>
                         <th>Name</th>
                         <th>Price</th>
@@ -41,7 +39,6 @@
                 @if($data)
                     @foreach($data as $d)
                     <tr>
-                        <td>{{$d->id}}</td> <!--The id match from the database column-->
                         <td>{{$d->roomtype->type}} <!--the "roomtype" is the function from the model -room which shows the relationship between room and roomtype(Room belongs to RoomType)-->
                         <td>{{$d->title}}</td> <!--The title match from the database column-->
                         <th>{{$d->price}}</th>

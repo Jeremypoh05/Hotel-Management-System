@@ -20,14 +20,12 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>#</th>
                         <th>Type</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tfoot> 
                     <tr>
-                        <th>#</th>
                         <th>Type</th>
                         <th>Action</th>
                     </tr>
@@ -36,7 +34,6 @@
                 @if($data)
                     @foreach($data as $d)
                     <tr>
-                        <td>{{$d->id}}</td> <!--The id match from the database column-->
                         <td>{{$d->type}}</td> <!--The "type" match from the database column-->
                         <td>
                             <a href="{{url('admin/roomtype/'.$d->id).'/edit'}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>

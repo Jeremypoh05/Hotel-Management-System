@@ -61,7 +61,7 @@
             </tr>
             <tr>
                 <th>Price</th>
-                <td>{{$data->room->price}}</td>
+                <td>RM {{$data->roomprice}}</td>
             </tr>
             <tr>
                 <th>Reference</th>

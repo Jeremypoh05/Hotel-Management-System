@@ -76,7 +76,9 @@ Route::resource('admin/staff',StaffController::class);
 //Booking
 Route::get('admin/booking/{id}/delete',[BookingController::class,'destroy']);
 Route::get('admin/booking/available-rooms/{checkin_date}',[BookingController::class,'available_rooms']);
+Route::get('admin/booking/change-status/{id}',[BookingController::class,'changeStatus'])->name('changeStatus');
 Route::resource('admin/booking',BookingController::class);
+
 
 //Testimonial
 Route::get('admin/testimonial/{id}/delete',[AdminController::class,'destroy_testimonial']);

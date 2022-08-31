@@ -59,7 +59,7 @@ class BookingController extends Controller
                 'checkout_date'=>$request->checkout_date,
                 'total_adults'=>$request->total_adults,
                 'total_children'=>$request->total_children,
-                'roomprice'=>$request->roomprice,
+                'roomprice'=>($request->roomprice) * ($request->stayduration),
                 'ref'=>$request->ref
             ];
             session($sessionData);
@@ -71,7 +71,7 @@ class BookingController extends Controller
                     'product_data' => [
                       'name' => 'Room-Booking',
                     ],
-                    'unit_amount' => $request->roomprice*100,
+                    'unit_amount' => (($request->roomprice) * ($request->stayduration) * 100),
                   ],
                   'quantity' => 1,
                 ]],
@@ -88,6 +88,7 @@ class BookingController extends Controller
             $data->checkout_date=$request->checkout_date;
             $data->total_adults=$request->total_adults;
             $data->total_children=$request->total_children;
+            $data->roomprice=($request->roomprice) * ($request->stayduration2);
             if($request->ref=='front'){
                 $data->ref='customer';
             }else{
@@ -159,6 +160,18 @@ class BookingController extends Controller
         return response()->json(['data'=>$data]);
     }
 
+    //change status
+    public function changeStatus($id){
+        $getStatus = Booking::select('status')->where('id',$id)->first();
+        if($getStatus->status==1){
+            $status = 0;
+        }else{
+            $status = 1;
+        }
+        Booking::where('id',$id)->update(['status'=>$status]);
+        return redirect()->back();
+    }
+
     public function frontend_booking()
     {
         $customers=Customer::all();
@@ -178,6 +191,7 @@ class BookingController extends Controller
             $data->checkout_date=session('checkout_date');
             $data->total_adults=session('total_adults');
             $data->total_children=session('total_children');
+            $data->roomprice=session('roomprice');
             if(session('ref')=='front'){
                 $data->ref='customer';
             }else{
@@ -203,9 +217,11 @@ class BookingController extends Controller
         ->leftjoin('customers','customers.id','=','bookings.customer_id')
         ->leftjoin('rooms','rooms.id','=','bookings.room_id')
         ->leftjoin('room_types', 'room_types.id', '=', 'rooms.room_type_id')
-        ->select('bookings.*','rooms.title as roomTitle','rooms.price as roomPrice',
+        ->select('bookings.*','rooms.title as roomTitle','bookings.roomprice as roomPrice',
                   'room_types.type as roomType', 'customers.id as cusID')
-        ->where('bookings.id','=',$customerid)
+        ->where('bookings.customer_id','=',$customerid)
+        ->orderby('id', 'DESC')
+        ->take(1)
         ->get();
   
         $pdf = PDF::loadView('myPDF', compact('booking'));

@@ -54,13 +54,27 @@
                             <p>Available Rooms:</p>
                             <select class="room-list" name="room_id"></select>
                         </div>
-                        <p class="show-room-price-amount" id="output">Total Price:&nbsp;<span class="show-room-price"></span></p> 
+                        <div class="total-price">
+                             <p class="show-room-price-amount">Total Price: RM&nbsp;<span class="show-room-price"></span></p> 
+                        </div>
                         @if(Session::has('data'))
                     	<input type="hidden" name="customer_id" value="{{session('data')[0]->id}}" />
                         @endif 
                         <input type="hidden" name="roomprice" class="room-price" value="" />
                         <input type="hidden" name="ref" value="front">
-                        <input type="submit" class="booking-btn"/>
+                        <input type="hidden" name="stayduration" value=""/>
+                        <script>
+                              $(document).ready(function(){
+                                $('#bookingpay').click(function(){
+                                    const date1 = document.getElementById("checkin_date").valueAsDate;
+                                    const date2 = document.getElementById("checkout_date").valueAsDate;
+                                    const diffTime = Math.abs(date2 - date1);
+                                    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                                    document.querySelector('input[name="stayduration"]').value = diffDays;
+                                });
+                            });
+                        </script>
+                        <input type="submit" id="bookingpay" class="booking-btn"/>
                     </div>
                 </form>
             </div>
@@ -200,13 +214,6 @@
      
     //function of showing available rooms
     $(document).ready(function(){
-       
-        var d1=document.getElementById("checkin_date").value;
-        var d2=document.getElementById("checkout_date").value;
-        const dateOne = new Date(d1);
-        const dateTwo = new Date(d2);
-        const time = Math.abs(dateTwo - dateOne);
-        const days = Math.ceil(time / (1000 * 60 * 60 * 24));
         $(".checkin-date").on('blur',function(){
             var _checkindate=$(this).val();
             // Ajax
@@ -217,7 +224,7 @@
                     $(".room-list").html('<option>--- Loading ---</option>');
                 },
                 success:function(res){
-                    var _html='';
+                    var _html='<option selected="true" disabled="disabled">--- Select A Room Type ---</option>';
                     $.each(res.data,function(index,row){
                         _html+='<option data-price="'+row.room.price+'" value="'+row.room.id+'">'+row.roomtype.type+'-'+row.room.title+'</option>';
                     });
@@ -231,9 +238,13 @@
         });
 
         $(document).on("change",".room-list",function(){
+            const date1 = document.getElementById("checkin_date").valueAsDate;
+            const date2 = document.getElementById("checkout_date").valueAsDate;
+            const diffTime = Math.abs(date2 - date1);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
             var _selectedPrice=$(this).find('option:selected').attr('data-price');
             $(".room-price").val(_selectedPrice);
-            $(".show-room-price").text(_selectedPrice);
+        $(".show-room-price").text((_selectedPrice * diffDays));
         });
        
     });

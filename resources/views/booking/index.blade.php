@@ -24,8 +24,7 @@
                                             <th style="max-width:70px">Room Name</th>                                        
                                             <th style="max-width:70px">CheckIn Date</th>
                                             <th style="max-width:70px">CheckOut Date</th>
-                                            <th>Price</th>
-                                            <th>Ref</th>
+                                            <th>Status</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -37,8 +36,7 @@
                                             <th>Room Name</th>
                                             <th>CheckIn Date</th>
                                             <th>CheckOut Date</th>
-                                            <th>Price</th>
-                                            <th>Ref</th>
+                                            <th>Status</th>
                                             <th>Action</th>
                                         </tr>
                                     </tfoot>
@@ -51,8 +49,13 @@
                                             <td>{{$booking->room->title}}</td> <!--room is the function of reletionship that created from booking model-->
                                             <td>{{$booking->checkin_date}}</td>
                                             <td>{{$booking->checkout_date}}</td>
-                                            <td>{{$booking->room->price}}</td>
-                                            <td>{{$booking->ref}}</td>
+                                            <td>
+                                                @if($booking->status==1)
+                                                <a href="{{url('admin/booking/change-status/'.$booking->id)}}" onclick="return confirm('Are you sure to change the booking status?')"class="btn btn-sm btn-danger">Not Checked In</a>
+                                                @else
+                                                <a href="{{url('admin/booking/change-status/'.$booking->id)}}" onclick="return confirm('Are you sure to change the booking status?')" class="btn btn-sm btn-success">Checked In</a>
+                                                @endif
+                                            </td>
                                             <td><a href="{{url('admin/booking/'.$booking->id)}}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>
                                                 <a href="{{url('admin/booking/'.$booking->id.'/delete')}}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this data?')"><i class="fa fa-trash"></i></a>
                                             </td>

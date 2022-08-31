@@ -1,6 +1,6 @@
 @extends('layout')
 @section('content')
-
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
  <!-- Begin Page Content -->
  <div class="container-fluid">
 
@@ -66,7 +66,20 @@
                 <td><p> <span class="show-room-price"></span></p></td>
                 </tr>
                 <td colspan="2">
-                <input type="submit" class="btn btn-primary" />
+                <input type="hidden" name="roomprice" class="room-price" value="" />
+                <input type="hidden" name="stayduration2" value=""/>
+                <script>
+                      $(document).ready(function(){
+                        $('#bookingpay2').click(function(){
+                            const date1 = document.getElementById("checkin_date").valueAsDate;
+                            const date2 = document.getElementById("checkout_date").valueAsDate;
+                            const diffTime = Math.abs(date2 - date1);
+                            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                            document.querySelector('input[name="stayduration2"]').value = diffDays;
+                        });
+                    });
+                </script>
+                <input type="submit" id="bookingpay2" class="btn btn-primary"/>
                 </td> 
             </tr>
             </table>  
@@ -96,8 +109,8 @@
      tomorrow = yyyy + '-' + mm + '-' + tmrdd; 
      $('#checkout_date').attr('min',tomorrow);
 
-    //function of showing available rooms
-    $(document).ready(function(){
+      //function of showing available rooms
+      $(document).ready(function(){
         $(".checkin-date").on('blur',function(){
             var _checkindate=$(this).val();
             // Ajax
@@ -108,9 +121,9 @@
                     $(".room-list").html('<option>--- Loading ---</option>');
                 },
                 success:function(res){
-                    var _html='';
+                    var _html='<option selected="true" disabled="disabled">--- Select A Room Type ---</option>';
                     $.each(res.data,function(index,row){
-                        _html+='<option data-price="'+'RM '+row.room.price +'" value="'+row.room.id+'">'+row.roomtype.type+'-'+row.room.title+'</option>';
+                        _html+='<option data-price="'+row.room.price+'" value="'+row.room.id+'">'+row.roomtype.type+'-'+row.room.title+'</option>';
                     });
                     $(".room-list").html(_html);
 
@@ -122,11 +135,15 @@
         });
 
         $(document).on("change",".room-list",function(){
+            const date1 = document.getElementById("checkin_date").valueAsDate;
+            const date2 = document.getElementById("checkout_date").valueAsDate;
+            const diffTime = Math.abs(date2 - date1);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
             var _selectedPrice=$(this).find('option:selected').attr('data-price');
             $(".room-price").val(_selectedPrice);
-            $(".show-room-price").text(_selectedPrice);
+            $(".show-room-price").text((_selectedPrice * diffDays));
         });
-
+       
     });
 </script>
 @endsection

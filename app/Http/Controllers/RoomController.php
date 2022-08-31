@@ -46,7 +46,7 @@ class RoomController extends Controller
             'description'=>'required',
             'bed'=>'required',
             'bedroom'=>'required',
-            'amenities'=>'required'
+            'amenities'=>'required',
         ]);
 
         $data=new Room;

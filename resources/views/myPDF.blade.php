@@ -181,7 +181,7 @@
                          <td class="text-right">{{$bookings->checkin_date}}</td>
                          <td class="text-right">{{$bookings->checkout_date}}</td>
                          <td class="text-right">{{$bookings->roomPrice}}</td>
-                  @endforeach
+                     @endforeach
                      </tr>
              </table>
 
