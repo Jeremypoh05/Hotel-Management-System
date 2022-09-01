@@ -56,7 +56,9 @@
                                                 <a href="{{url('admin/booking/change-status/'.$booking->id)}}" onclick="return confirm('Are you sure to change the booking status?')" class="btn btn-sm btn-success">Checked In</a>
                                                 @endif
                                             </td>
-                                            <td><a href="{{url('admin/booking/'.$booking->id)}}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>
+                                            <td>
+                                                <a href="{{url('admin/booking/'.$booking->id).'/edit'}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
+                                                <a href="{{url('admin/booking/'.$booking->id)}}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>
                                                 <a href="{{url('admin/booking/'.$booking->id.'/delete')}}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this data?')"><i class="fa fa-trash"></i></a>
                                             </td>
                                         </tr>

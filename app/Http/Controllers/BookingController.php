@@ -32,7 +32,7 @@ class BookingController extends Controller
     public function create()
     {
         $customers=Customer::all();
-        return view('booking.create',['data'=>$customers]);
+        return view('booking.create',['customers'=>$customers]);
     }
 
     /**
@@ -120,8 +120,12 @@ class BookingController extends Controller
      */
     public function edit($id)
     {
-        //
+        $customers=Customer::all();
+        $data= Booking::find($id);
+        
+        return view('booking.edit',compact('data','customers'));
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -132,9 +136,21 @@ class BookingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data=Booking::find($id);
+        $data->customer_id=$request->customer_id;
+        $data->room_id=$request->room_id;
+        $data->checkin_date=$request->checkin_date;
+        $data->checkout_date=$request->checkout_date;
+        $data->total_adults=$request->total_adults;
+        $data->total_children=$request->total_children;
+        if($request->ref=='front'){
+            $data->ref='customer';
+        }else{
+            $data->ref='admin';
+        }
+        $data->save();
+        return redirect('admin/booking/'.$id.'/edit')->with('success','Data has been updated.');
     }
-
     /**
      * Remove the specified resource from storage.
      *
